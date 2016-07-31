@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>用户输入事件绑定</title>
+</head>
+<body>
+	<div id="app">
+		<input v-model="newText" v-on:keyup.enter = "addItem">
+		<ul>
+			<li v-for = "item in todos">{{$index}}---{{item.text}}
+				<button v-on:click="removeItem($index)">X</button>
+			</li>
+		</ul>
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	new Vue({
+		el:'#app', 
+		data:{
+			todos:[
+				{text: "add some text"}
+			]
+		},
+		methods:{
+			addItem:function(){
+				var text = this.newText.trim();//this->指向
+				if(text){
+					this.todos.push({text: text});//this.todos
+					this.newText="";
+				}
+			},
+			removeItem:function(index){
+				this.todos.splice(index, 1);
+			}
+		}
+	});
+</script>
+</body>
+</html>

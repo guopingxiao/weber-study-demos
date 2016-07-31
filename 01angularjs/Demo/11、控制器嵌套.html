@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta name="name" content="content" charset = "utf-8">
+	<title>11</title>
+	
+	<script src="../js/angularjs.js"></script>
+	<script src="../js/index11.js"></script>
+</head>
+<body>
+<!-- 	<div ng-app="myApp">
+	<h1 >hello {{name}}!</h1>
+</div> -->
+	<div ng-controller="ParentController">
+		<div ng-controller="ChildController">
+			<a ng-click="sayHello()">Say hello</a>
+		</div>
+			{{ person }}
+	</div>
+	
+</body>
+</html>

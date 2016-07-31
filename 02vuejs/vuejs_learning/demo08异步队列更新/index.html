@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>响应式原理</title>
+</head>
+<body>
+	<div id= "app">{{msg}}</div>
+	<div id="app1">{{msg1}}</div>
+	
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	var vm = new Vue({
+		el:'#app', 
+		data: {
+			msg: "aaa"
+		}
+	});
+	vm.msg = "new message";
+	console.log(vm.$el.textContent === vm.msg);
+	Vue.nextTick(function(){
+		console.log(vm.$el.textContent === vm.msg);
+	});
+
+
+	var vm1 = new Vue({
+		el:'#app1', 
+		data:{
+			msg:"hi"
+		}, 
+		// computed:{
+		// 	msg1: function(){
+		// 		return Date.now() + this.msg; 
+		// 	}
+		// }
+		computed:{
+			msg1: {
+				cache: false,
+				get: function(){
+					return Date.now() + this.msg; 
+			    }
+			}
+		}
+
+	});
+	console.log(vm1.msg1);
+</script>
+</body>
+</html>

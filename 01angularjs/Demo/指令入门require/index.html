@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>控制器</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="firstController">
+        <div book-list></div>
+    </div>
+
+    <form ng-app name="form">
+
+        Marital status:
+        <select  ng-model="maritalStatus" required>
+            <option value="">Select...</option>
+            <option value="M">Married</option>
+            <option value="UM">Unmarried</option>
+        </select>
+
+        <div ng-show="maritalStatus == 'UM'">
+            Number of children: <input type="number" ng-model="children"  ng-required="maritalStatus == 'UM'">
+        </div>
+
+        (for testing) Is this form correctly filled? {{form.$valid}}
+
+    </form>
+
+
+    <script type="text/javascript" src="js/angularjs.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>

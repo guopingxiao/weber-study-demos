@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta  charset="utf-8">
+	<title>2、angularjs的数据绑定</title>
+	<script src="./js/angularjs.js"></script>
+	<script src="./js/index.js"></script>
+
+</head>
+<body>
+<!-- angularjs的数据绑定，双向绑定，M,V,c之间的绑定 -->
+
+
+	<div ng-controller="firstController">
+		<input type="text" ng-model="name" value="" />
+			{{name}}
+		<div ng-controller="secondController">
+			<input type="text" ng-model="name" value="" />
+				{{name}}
+		</div>
+	</div>
+
+
+</body>
+</html>

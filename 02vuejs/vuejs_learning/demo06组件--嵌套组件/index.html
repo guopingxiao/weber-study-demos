@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>Vue组件</title>
+</head>
+<body>
+	<div id="app">
+			<parent></parent>
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	
+	var MyComponent = Vue.extend({
+		template:'<div>{{message}}</div><button v-on:click = "doSom">点我</button>', 
+		data: function(){
+			return{
+				message:"something"
+			}
+		}, 
+		methods:{
+			doSom: function(){
+				alert("u click me");
+			}
+		} 
+	});
+
+	Vue.component('parent',{
+		template:'<div>parent<my-component></my-component></div>', 
+		components:{
+			"my-component":MyComponent
+		}
+	});
+	
+	//Vue.component('my-component', MyComponent);
+	//注意要在初始化实例之前注册组件
+	var vm = new Vue({
+		el:'#app'
+	});
+
+
+
+
+
+
+
+	
+</script>
+</body>
+</html>

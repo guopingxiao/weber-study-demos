@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>用户输入事件绑定</title>
+</head>
+<body>
+	<div id="app">
+		a={{a}} ---b ={{b}}
+		firstName:<input v-model="firstName">
+		lastName:<input v-model="lastName">
+		fullName: {{fullName}}
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	var vm = new Vue({
+		el:'#app', 
+		data:{
+			a:1,
+			firstName:"firstName",
+			lastName: "lastName",
+			fullName:'firstName lastName'
+		},
+		computed:{//自动进行脏检查
+			b:function(){
+				return this.a + 1;
+			},
+			fullName:{
+				get:function(){
+					return this.firstName + ' ' + this.lastName;
+				},
+				set:function(newName){
+					var names = newName.split(' ');
+					this.firstName = names[0];
+					this.lastName = names[names.length - 1];
+				}
+			}
+		}
+	});
+
+	vm.fullName = "Xiao guo";
+	console.log(vm.b) // -> 2
+	vm.a = 2
+	console.log(vm.b) // -> 3
+
+	//$watch
+	// vm.$watch('firstName', function(val){
+	// 	this.fullName =  val + " " + this.lastName;
+	// });
+
+	// vm.$watch('lastName', function(val){
+	// 	this.fullName =  this.firstName + ' ' + val;
+	// });
+</script>
+</body>
+</html>

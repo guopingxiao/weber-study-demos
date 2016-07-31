@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>自定义过滤器</title>
+</head>
+<body>
+	<div id= "app">
+		{{msg | filter1}}
+	</div>
+
+	
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+
+	Vue.filter('filter1', function(val) {
+		return val.substring(0,2);
+	});
+	var vm = new Vue({
+		el:'#app', 
+		data:{
+			msg:'hello'
+		}
+		
+	});
+	
+</script>
+</body>
+</html>

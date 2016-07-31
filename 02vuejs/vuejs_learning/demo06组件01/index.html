@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>Vue组件</title>
+</head>
+<body>
+	<div id="app">
+	<my-component></my-component>
+		<!-- <my-component></my-component>
+		<my-component2></my-component2> -->
+		<my-parent>
+			<my-component></my-component>
+		</my-parent>
+
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	
+	var MyComponent = Vue.extend({
+		template:'<div>A custom Component!</div>'
+	});
+	/*//1.创建组件，Vue.extend创建构造器
+	//2. 注册组件 Vue.component();
+	Vue.component('my-component', MyComponent);
+
+	//3.一次性完成组件创建与注册,可以省略extend();
+	Vue.component('my-component2', {
+		template:'<div>this is MyComponent2!</div>'
+	});
+
+	//4.组件嵌套
+	});*/
+	var MyParent = Vue.extend({
+		template:'<div>This is parent tag!</div>',
+		components:{
+			'my-component':MyComponent
+		}
+
+	//5.局部嵌套组件
+	// Vue.component('my-parent', {
+	// 	template:'<div>This is parent tag!</div>', 
+	// 	components: MyComponent
+		// components:{
+		// 	'my-component':{
+		// 		template:'<div>This is child tag!</div>'
+		// 	}
+		//}
+	})
+
+	Vue.component('my-parent', MyParent);
+	
+	//注意要在初始化实例之前注册组件
+	var vm = new Vue({
+		el:'#app'
+	});
+
+
+
+
+
+
+
+	
+</script>
+</body>
+</html>

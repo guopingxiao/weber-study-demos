@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta  charset="utf-8">
+	<title>9</title>
+	<script src="../js/angularjs.js"></script>
+	<script src="../js/index9.js"></script>
+
+</head>
+<body>
+	<div ng-app="myApp">
+		<div ng-controller="firstConctroller">
+			<p>{{1234565675 | number}}</p>
+			<p>{{53453489053 | currency}}</p>
+			<p>{{today | date:"shortDate"}}</p>
+			<p>{{today | date:"mediumDate"}}</p>
+			<p>{{today | date:"fullDate"}}</p>
+			<p>{{today | date:"short"}}</p>
+			<p>{{today | date:"medium"}}</p>
+			<p>{{today | date:"shortTime"}}</p>
+			<p>{{today | date:"mediumTime"}}</p>
+			<p>{{today | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+			<p>{{message | lowercase}}</p>
+			<p>{{message | uppercase}}</p>
+			<p>{{message | limitTo: 3}}</p>
+			<p>{{message | limitTo: -6}}</p>
+
+			<p>{{city | json}}</p>
+			<!-- <p>{{city | filter:{name:'ing'}}}</p> -->
+			{{"xiaoguoping ao fhafj" | uppercaseFirst}};<br/>
+			{{"xiaoGuoPing Ao Fhafj" | lowercase | uppercaseFirst}};
+	
+			
+			
+		</div>
+		
+	</div>
+
+</body>
+</html>

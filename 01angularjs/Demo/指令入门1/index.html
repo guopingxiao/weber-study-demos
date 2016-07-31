@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>控制器</title>
+</head>
+<body ng-app="myApp">
+
+    <div ng-controller="firstController">
+        <ul  ng-init="cityArr = ['上海','北京','杭州']">
+            <li  ng-repeat="city in cityArr" >
+            <span>
+                index:{{$index}}
+            </span>
+            <span>
+                first:{{$first}}
+            </span>
+            <span>
+                middle:{{$middle}}
+            </span>
+            <span>
+                last :{{$last}}
+            </span>
+            <span>
+                {{city}}
+            </span>
+            </li>
+        </ul>
+        <button ng-click="changeStatus($event)">切换状态</button>
+           {{status}}
+    </div>
+
+
+    <script type="text/javascript" src="js/angularjs.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>

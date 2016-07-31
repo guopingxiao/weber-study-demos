@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>响应式原理</title>
+</head>
+<body>
+	<div id= "app" v-demo:hello.a.b = "msg">
+		{{msg}}
+	</div>
+
+	
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+
+	Vue.directive('demo',{
+		bind: function(){
+			console.log("bind ..start!");
+		}, 
+		update: function(value){
+			this.el.innerHTML =
+		      '指令名称name：'       + this.name + '<br>' +  //自定义指令名称demo
+		      '指令的表达式expression：' + this.expression + '<br>' +
+		      '指令的参数arg：'   + this.arg + '<br>' +
+		      '指令修饰符对象modifiers：'  + JSON.stringify(this.modifiers) + '<br>' +
+		      'value：'      + value
+		}
+	});
+	var vm = new Vue({
+		el:'#app', 
+		data:{
+			msg:'hello'
+		}
+		
+	});
+	
+</script>
+</body>
+</html>

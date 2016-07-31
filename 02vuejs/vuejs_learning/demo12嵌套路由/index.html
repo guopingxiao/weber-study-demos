@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>自定义过滤器</title>
+</head>
+<body>
+	<div id= "app">
+		<h1>Hello App</h1>
+		<p>
+			
+			<a href="#" v-link="{path:'/parent'}">Go to Parent</a>
+			<a href="#" v-link="{path:'/parent/child1'}">Go to Child1</a>
+			<a href="#" v-link="{path:'/parent/child2'}">Go to Child2</a>
+		</p>
+
+		<router-view></router-view>
+	</div>
+
+	
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script src="../js/vue-router.min.js"></script>
+<script>
+	var Parent = Vue.extend({
+		template:
+	    '<div class="foo">' +
+	      '<h2>This is Parent!</h2>' +
+	      '<router-view></router-view>' + // <- nested outlet
+	    '</div>'
+	});
+
+	var Child1 = Vue.extend({
+		template:'<p>This is Child1</p>'
+	});
+
+	var Child2 = Vue.extend({
+	  	template:'<p>This is Child2,当前路由参数: {{$route.params | json}}</p>'
+	})
+
+
+
+	var App = Vue.extend({});
+
+	var router = new VueRouter();
+	router.map({
+		'/parent':{
+			component:Parent,
+			subRoutes:{
+					'/':{
+						component:{
+							template:'<p>This is subView of Parent,当前路径: {{$route.path}}</p>'
+						}
+					},
+					'/child1':{
+						component:Child1
+					}, 
+					'/child2':{
+						component:Child2
+					}
+			}
+		}
+	});
+
+	router.start(App, "#app");
+	
+	
+</script>
+</body>
+</html>

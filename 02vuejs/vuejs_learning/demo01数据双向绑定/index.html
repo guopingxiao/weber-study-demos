@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>SPP Package Check Report</title>
+</head>
+<body>
+
+	<FORM method=post>
+	    <LABEL for=someInput> Your Name: </LABEL>
+	<INPUT id=someInput type=text name=someInput placeholder="Douglas 
+	Quaid" required="required">
+	    <BUTTON type=submit>Go</BUTTON>
+	</FORM>
+
+
+	<div id="app">
+		<h1>{{message}}</h1>
+		<input type="text" v-model = "message">
+		<pre>
+			{{$data | json}}
+		</pre>
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	new Vue({
+		el:'#app', //id = app
+		data:{
+			message:"Hello Vue!"//$data引用
+		}
+	});
+</script>
+</body>
+</html>

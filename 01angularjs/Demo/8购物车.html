@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta  charset="utf-8">
+	<title>8</title>
+	<script src="./js/angularjs.js"></script>
+	<script src="./js/index8.js"></script>
+	<link rel="stylesheet"  href="./css/bootstrap.css">
+
+</head>
+<body>
+	<div ng-app ng-controller="cartController" class="container">
+		<table class="table table-hover" ng-show="cart.length">
+			<thead>
+				<tr>
+					<th>产品编号</th>
+					<th>产品名称</th>
+					<th>产品数量</th>
+					<th>产品单价</th>
+					<th>产品总价</th>
+					<th>操作</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="item in cart">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					
+					<td>
+						<button type="button" class="btn btn-info" ng-click="reduce(item.id)">-</button>
+						<input type="text"  value="{{item.quantity}}" ng-model="item.quantity">
+						<button type="button" class="btn btn-info" ng-click="add(item.id)">+</button>
+					</td>
+					
+					<td>{{item.price}}</td>
+					<td>{{item.price*item.quantity}}</td>
+					<td>
+						<button type="button" class="btn btn-warning" ng-click="remove(item.id)">删除</button>
+					</td>
+
+				</tr>
+
+ 				<tr>
+                    <td>总购数量：</td>
+                    <td>{{totalQuantity()}}</td>   <!-- 这里totalQuantity是个函数，调用时要加括号    -->           
+                    <td>总购总价：</td>
+                    <td> {{totalPrice()}}</td>  
+                    <td colspan="2">
+                        <button type="button"  class="btn btn-danger" ng-click="cart={}">清空购物车</button>
+                    </td>
+                </tr>
+			</tbody>
+		</table>
+		<h2 ng-hide="cart.length">您的购物车为空，赶紧去买点东西吧！</h2>
+	</div>
+
+
+</body>
+</html>

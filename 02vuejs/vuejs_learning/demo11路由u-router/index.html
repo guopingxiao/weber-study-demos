@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>自定义过滤器</title>
+</head>
+<body>
+	<div id= "app">
+		<h1>Hello App</h1>
+		<p>
+			
+			<a href="#" v-link="{path:'/home'}">Go to Home</a>
+			<a href="#" v-link="{path:'/list'}">Go to List</a>
+		</p>
+
+		<router-view></router-view>
+	</div>
+
+	
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script src="../js/vue-router.min.js"></script>
+<script>
+	var Home = Vue.extend({
+		template:'<p>This is Home</p>'
+	});
+
+	var List = Vue.extend({
+		template:'<p>This is list</p>'
+	});
+
+	var App = Vue.extend({});
+
+	var router = new VueRouter();
+	router.map({
+		'/home':{
+			component:Home
+		},
+		'/list':{
+			component:List
+		}
+	});
+
+	router.start(App, "#app");
+	
+	
+</script>
+</body>
+</html>

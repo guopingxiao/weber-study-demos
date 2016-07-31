@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/bootstrap.min.css"/>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="firstController" style="margin-top: 100px;">
+
+    <form name="myForm" action="kittencup.php" ng-controller="firstController" class="container form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">资讯类型</label>
+            <div class="col-sm-3">
+                <select class="form-control"  ng-change="typeFilter(types, sBusikey)" ng-model="sBusikey" ng-options="type.sBusikey as type.sBusiDesc for type in artTypes">
+                    <option value=""> --请选择-- </option>
+                </select>
+            </div>
+			<div class="col-sm-3">
+                <select class="form-control"  ng-show="sBusikey && showSub" value ="{{type.sDetailBusikey}}" ng-model="type.sDetailBusikey" ng-options="type.sDetailBusikey as type.sDetailBusiDesc for type in subTypes" >
+                    <option value=""> --请选择-- </option>
+                </select>	
+            </div>
+			{{sBusikey}}---{{type.sDetailBusikey}}
+            
+        </div>
+
+    </form>
+
+</div>
+
+
+<script type="text/javascript" src="./js/angularjs.js"></script>
+<script type="text/javascript" src="js/selectTwo2.js"></script>
+
+
+</body>
+</html>
