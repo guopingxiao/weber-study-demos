@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>index</title>
+
+</head>
+
+<body ng-app="app" ng-controller="demoCtrl">
+
+      <input type="button" value="first" ng-click="first();"/>
+      <div>begin</div>
+      <div id="content">
+        <div ng-repeat="item in dataList">{{item.name}}</div>
+      </div>
+      <div>end</div>
+
+  <script src="lib/angular-1.2.21.min.js"></script>
+
+  <script type="text/javascript">
+  window.onload = function(){
+    
+    var dom = document.getElementById("content");
+    dom.addEventListener("DOMNodeRemoved",function(event){
+          console.log("some dom was deleted.");
+    });
+  
+  };
+  var app = angular.module('app', []);
+  app.controller('demoCtrl', function($scope) {
+    $scope.dataList = [ 
+                    {"id":1,"name":"a1"},
+                    {"id":2,"name":"a2"},
+                    {"id":3,"name":"a3"},
+                    {"id":4,"name":"a4"}
+                  ];
+        
+        $scope.first = function(){
+        $scope.dataList = [ 
+                  {"id":1,"name":"b1"},
+                  {"id":2,"name":"b2"},
+                  {"id":3,"name":"b3"},
+                  {"id":4,"name":"b4"},
+                  {"id":5,"name":"b5"}
+                  ];
+                }
+        
+        // }
+        // 顺序发生变化
+        // $scope.dataList = [ 
+        //             {"id":4,"name":"b1"},
+        //             {"id":2,"name":"b2"},
+        //             {"id":3,"name":"b3"},
+        //             {"id":1,"name":"b4"},
+        //             {"id":0,"name":"b5"}
+        //             ];
+        //     }
+
+  });
+  </script>
+</body>
+
+</html>

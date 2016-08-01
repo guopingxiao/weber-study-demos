@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>index</title>
+  <link href="lib/ng-pagination.css" rel="stylesheet" />
+  <style type="text/css">
+  body {
+    padding: 20px 0 0 20px;
+  }
+
+  .pager {
+    margin: 20px;
+  }
+  </style>
+  <script src="lib/angular.min.js"></script>
+   <script src="lib/ng-page.js"></script>
+</head>
+<body ng-app ="app">
+  <div ng-controller="demoCtrl">
+    <div class="pager">
+      <pager page-count="pageCount" current-page="currentPage" on-page-change="onPageChange()"></pager>
+    </div>
+    <div class="pager">
+      <pager page-count="pageCount" current-page="currentPage" on-page-change="onPageChange()" first-text="首页" next-text="下一页" prev-text="上一页" last-text="尾页" show-first-last-text = "false"></pager>
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+
+   var app = angular.module('app', ['ng-page']);
+   app.controller('demoCtrl', function($scope) {
+		$scope.onPageChange = function() {
+			//ajax request to load data
+			console.log($scope.currentPage);
+		};
+		$scope.pageCount = 100;
+	})
+
+</script>
+</body>
+
+</html>

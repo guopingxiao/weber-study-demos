@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="name" content="content" charset = 'utf-8'>
+	<title>-->运算符</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//1.趋于符号
+	function countdown(n){
+		while(n-->0){
+			console.log(n)
+		}
+	}
+	countdown(8);
+
+	
+	//es 5
+	arr = [1,2,3,4];
+
+	var totle = arr.reduce(function(a,b){
+		return a + b;
+	},0);
+	console.log(totle);
+
+	// es6,参数=>{} 多参数用（a,b）,普通对象，用括号括起来（{}）
+	var totle1 =  arr.reduce((a,b) => a+b, 0 );
+	console.log(totle1);
+
+
+
+</script>
+</body>
+</html>

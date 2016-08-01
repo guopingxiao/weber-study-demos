@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="name" content="content" charset="utf-8">
+	<title>Vuejs实现简单的分页操作</title>
+	<link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<!-- 	<div class="page-bar">
+	<ul>
+		<li v-if="showFirstText"><a v-on：click="cur--">上一页</a></li>
+
+		<li v-for = "index in pagenums">
+			<a v-on:click="pageChange(index)">{{index}}</a>
+
+		</li>
+
+		<li v-if="showNextText"><a v-on：click="cur++">下一页</a></li>
+		<li><a>共<i>{{all}}</i>页</a></li>
+	</ul>
+
+</div> -->
+
+<div id="app">
+	<vue-pager :currentPage.sync="currentPage" :totlePage.sync="totlePage" v-on:page-change="listen"></vue-pager>
+    <p>{{msg}}</p>
+
+</div>
+<script src="vue.min.js"></script>
+<script src="vue-pagination.js"></script>
+
+<script type="text/javascript">
+  var app = new Vue({
+      el: '#app',
+      data:{
+        currentPage: 1,
+        totlePage: 28,
+        msg: ''
+      },
+      components:{
+        'vue-pager': vuePager
+      },
+      methods:{
+        listen:function(page){
+            this.msg = '你点击了'+page+ '页'
+        }
+      }
+  })
+
+</script>
+</body>
+</html>
