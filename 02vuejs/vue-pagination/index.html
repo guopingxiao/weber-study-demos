@@ -22,9 +22,11 @@
 </div> -->
 
 <div id="app">
-	<vue-pager :currentPage.sync="currentPage" :totlePage.sync="totlePage" v-on:page-change="listen"></vue-pager>
+	<vue-pager :currentpage.sync="currentpage" :totlepage.sync="totlepage" :visiblepage.sync="visiblepage" v-on:page-change="listen"></vue-pager>
     <p>{{msg}}</p>
-
+ <!-- 动态 Props: 通过v-bind绑定之后，当父组件的属性变化时，将传导给子组件，但是反过来不会，props 默认是单向绑定。使用 .sync 或 .once 绑定修饰符显式地强制双向或单次绑定：-->
+<!-- 自定义组件可以像普通元素一样直接使用 v-for：但是v-for不能将数据传递过去，要通过显示的绑定传递给子组件 -->
+<!-- 子组件通过v-on来监听自定义事件pageChange(),当被触发后，父组件的调用listen方法 -->
 </div>
 <script src="vue.min.js"></script>
 <script src="vue-pagination.js"></script>
@@ -33,12 +35,13 @@
   var app = new Vue({
       el: '#app',
       data:{
-        currentPage: 1,
-        totlePage: 28,
+        currentpage: 1,
+        totlepage: 28,
+        visiblepage:10,
         msg: ''
       },
       components:{
-        'vue-pager': vuePager
+        'vue-pager': vuePager  //子组件
       },
       methods:{
         listen:function(page){

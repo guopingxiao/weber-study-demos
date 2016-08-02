@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+
+<!--         <div class="page-bar">
+            <ul>
+            <li v-if="showFirst"><a v-on:click="currentpage--">上一页</a></li>
+            <li v-for="index in indexs"  v-bind:class="{ 'active': currentpage == index}">
+                <a v-on:click="btnClick(index)">{{ index }}</a>
+                </li>
+                <li v-if="showLast"><a v-on:click="currentpage++">下一页</a></li>
+                <li><a>共<i>{{totlepage}}</i>页</a></li>
+            </ul>
+        </div> -->
+
+        <div id="app">
+        <vue-nav :currentpage.sync="currentpage" :totlepage.sync="totlepage" v-on:btn-click="listen"></vue-nav>
+          <p>{{msg}}</p>
+
+        </div>
+
+
+
+
+
+<script src="vue.js"></script>
+<script src="vue-nav.js"></script>
+
+<script type="text/javascript">
+  var app = new Vue({
+      el: '#app',
+      data:{
+        currentpage: 1,
+        totlepage: 28,
+		visiblepage:10,
+        msg: ''
+      },
+      components:{
+        'vue-nav': Vnav
+      },
+      methods:{
+        listen:function(data){
+            this.msg = '你点击了'+data+ '页'
+        }
+      }
+  })
+
+
+
+
+
+
+</script>
+   
+</body>
+</html>
