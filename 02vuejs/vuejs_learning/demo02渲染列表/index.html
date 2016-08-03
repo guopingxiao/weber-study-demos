@@ -3,12 +3,18 @@
 <head>
 <meta name="name" content="content" charset="utf-8">
 	<title>vuejs渲染列表</title>
+	<style type="text/css">
+		.completed:{
+			color: red;
+		}
+	</style>
 </head>
 <body>
 	<div id="app">
 		<ul>
 		<template v-for="(key, todo) in todos">
-			<li>
+			<li @click="Troggle(todo)" :class="{'completed':todo.completed}">
+			<!-- class的写法有很多种 v-class = "[classA,classB,classC....]"为真的时候有这个class -->
 				{{key}}--{{todo.text}}
 			</li>
 			<li>1</li>
@@ -23,10 +29,15 @@
 		el:'#app', //id = app
 		data:{
 			todos:[
-		      { text: 'Learn JavaScript' },
-		      { text: 'Learn Vue.js' },
-		      { text: 'Build Something Awesome' }
+		      { text: 'Learn JavaScript', completed:true },
+		      { text: 'Learn Vue.js' ,completed:true},
+		      { text: 'Build Something Awesome' ,completed:false}
 		    ]
+		},
+		method:{
+			Troggle:function(todo){
+				todo.completed = !todo.completed;
+			}
 		}
 	});
 </script>

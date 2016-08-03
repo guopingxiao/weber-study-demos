@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>vuejs渲染列表</title>
+	<style type="text/css">
+		.completed:{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+
+		<my-task :list="todos"></my-task>
+		<my-task :list="[{ text: 'Learn JavaScript', completed:true }]"></my-task>
+		
+
+		<template id="template">		
+			<ul>
+				<li 
+					@click="Troggle(todo)" 
+					:class="{'completed':todo.completed}" 
+					v-for="(key, todo) in list">
+					{{key}}--{{todo.text}}
+				</li>
+			</ul>
+		</template>
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+
+	Vue.component('my-task',{
+		template:"#template",
+		props:['list'],
+		//数据传递过程，组件的props传递到V组件标签的属性中，这里的list绑定了Vue.data.todos,所以在组件里用todo in list,而不是todo in todos;注意这里要用绑定哦，不然的话，就是绑定名称的字符串；体会到了组件化的开发了吗？可以根据不同的todos来定制不同的组件哦，一套代码，实现功能相近，数据不同的业务就这么简单！！！
+		methods:{
+			Troggle:function(todo){
+				todo.completed = !todo.completed;
+			}
+		}
+	})
+	var vm = new Vue({
+		el:'#app', //id = app
+		data:{
+			todos:[
+		      { text: 'Learn JavaScript', completed:true },
+		      { text: 'Learn Vue.js' ,completed:true},
+		      { text: 'Build Something Awesome' ,completed:false}
+		    ]
+		},
+	});
+</script>
+</body>
+</html>

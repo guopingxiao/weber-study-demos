@@ -22,6 +22,8 @@
 			lastName: "lastName",
 			fullName:'firstName lastName'
 		},
+		//计算属性主要应用的场景，是要进行比较复杂的逻辑或者业务处理，可以放在计算属性中，
+		//因为是function，可以直接操作data里面的数据，再实时的刷新；
 		computed:{//自动进行脏检查
 			b:function(){
 				return this.a + 1;

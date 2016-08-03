@@ -7,7 +7,9 @@
 <body>
 	<div id="app">
 		<p>{{message}}</p>
-		<button v-on:click="reverse">reserved</button>
+		<textarea v-model="message"></textarea>
+		<br>
+		<button disabled="{{!message}}" v-on:click="reverse">reserved</button>
 	</div>
 	
 <script src="../js/vue.min.js" type="text/javascript"></script>
@@ -15,7 +17,7 @@
 	new Vue({
 		el:'#app', 
 		data:{
-			message:"Hello Vuejs!"
+			message:""
 		},
 		methods:{
 			reverse:function(){
