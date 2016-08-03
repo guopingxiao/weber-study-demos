@@ -16,14 +16,16 @@
 		<my-task :list="[{ text: 'Learn JavaScript', completed:true }]"></my-task>
 		
 
-		<template id="template">		
+		<template id="template">
+		<h3>My Task ({{remaining}})</h3>		
 			<ul>
 				<li 
 					@click="Troggle(todo)" 
 					:class="{'completed':todo.completed}" 
 					v-for="(key, todo) in list">
-					{{key}}--{{todo.text}}
+					{{key}}--{{todo.text}}<span @click ="deleteTask(todo)">X</span>
 				</li>
+
 			</ul>
 		</template>
 	</div>
@@ -38,6 +40,16 @@
 		methods:{
 			Troggle:function(todo){
 				todo.completed = !todo.completed;
+			},
+			deleteTask: function(todo){
+				this.list.$remove(todo);
+			}
+		},
+		computed: {
+			remaining: function(){
+				return this.list.filter(function(data){	//过滤器的使用
+					return !data.completed;
+				}).length;		
 			}
 		}
 	})
