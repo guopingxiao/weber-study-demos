@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>Vue组件</title>
+	<style type="text/css" >
+		.red{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+			<parent class="red" msg="hello"></parent>
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	
+	var MyComponent = Vue.extend({
+		template:'<div>来自父组件的消息：{{props1}}</div><button v-on:click = "doSom">点我</button>', 
+		props:['props1'],
+		data: function(){
+			return{
+				message:"something"
+			}
+		}, 
+		methods:{
+			doSom: function(){
+				alert(this.props1);
+			}
+		} 
+	});
+	//期望使用的父组件数据的属性。可以是数组或对象。对象用于高级配置，如类型检查，自定义验证，默认值等。
+	//
+	Vue.component('parent',{
+		data:function(){
+			return{
+				parentData:'data Comes from Parent'
+			}
+		},
+		props: ['class', 'msg'],
+		template:'<div class={{class}}>{{msg}} parent! <my-component :props1="parentData"></my-component></div>', 
+		components:{
+			"my-component":MyComponent
+		}
+	});
+	
+	//Vue.component('my-component', MyComponent);
+	//注意要在初始化实例之前注册组件
+	var vm = new Vue({
+		el:'#app'
+	});
+
+/**
+* 子组件和父组件之间的通行====  子组件获得父组件的数据
+*  可以使用 props 把数据传给子组件。“props” 是子组件数据的一个字段，该字段绑定了自身属性,属性值为父组件的数据，该数据可以使用在子组件的模板中，
+*  同样可以在其他地方，用this.props1这种方式引用！你能看懂吗？
+*  注意：在子组件中js中用的驼峰式的话，props: ['myMessage'], 子组件的的标签中用横杠形式my-message,如果传递简单的字符串，直接写，如果是引用类型，
+*  则用v-bind绑定该变量名称
+*/
+
+
+
+
+
+	
+</script>
+</body>
+</html>

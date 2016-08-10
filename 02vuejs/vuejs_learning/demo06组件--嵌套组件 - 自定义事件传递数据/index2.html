@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>Vue组件</title>
+	<style type="text/css" >
+		.red{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+			<parent></parent>
+			
+		<!-- 子组件模板 -->
+		<template id="child-template">
+		  <input v-model="msg">
+		  <button v-on:click="notify">Dispatch Event</button>
+		</template>
+
+		<!-- 父组件模板 -->
+		
+		<template id="parent-template">
+		  <p>Messages: {{ message | json }}</p>
+		  <child v-on:child-msg="listenToChild"></child>
+		</template>
+		
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	
+	// 注册子组件
+	// 将当前消息派发出去
+	var Child = Vue.component('child', {
+	  template: '#child-template',
+	  data: function () {
+		return { msg: 'hello' }
+	  },
+	  methods: {
+		notify: function () {
+		  if (this.msg.trim()) {
+			this.$dispatch('child-msg', this.msg)  //这里也可以是this.$dispatch();按道理说要和events绑定，但是v-on好像也可以哦
+			this.msg = ''
+		  }
+		}
+	  }
+	})
+
+	// 初始化父组件
+	// 将收到消息时将事件推入一个数组
+	Vue.component('parent',{
+	  template: '#parent-template',
+	  data:function(){
+		return{
+			message:[]
+		} 
+	  },
+	  component:{
+		'child':Child
+	  },
+	  methods:{
+		listenToChild: function(msg){
+			this.message.push(msg);
+		}
+	  }
+	  
+	})
+	
+	//Vue.component('my-component', MyComponent);
+	//注意要在初始化实例之前注册组件
+	var vm = new Vue({
+		el:'#app'
+	});
+
+/**
+* 子组件和父组件之间的通行
+* 子组件 --> 父组件： 
+*       方法一：子组件通过this.$diapatch('event-name',data)==向父链派发事件,并将data发送出去；父组件中，可以用events:{}里面监听子组件事件，并获取数据；events会自动$on方法；
+*       方法二：子组件通过this.$emit('event-name',data) 触发自定义事件，而父组件通过v-on绑定自定义事件，通过一般的事件，可以顺利监听到子组件传递过来的数据；
+*/
+
+
+
+
+
+	
+</script>
+</body>
+</html>

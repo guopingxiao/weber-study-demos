@@ -11,7 +11,9 @@
 </head>
 <body>
 	<div id="app">
-			<parent class="red" msg="hello"></parent>
+			<input v-model="parentMsg" number>
+			<!-- <parent class="red" v-bind:msg="parentMsg"></parent> -->
+			<parent  v-bind:my-message="parentMsg"></parent>
 	</div>
 	
 <script src="../js/vue.min.js" type="text/javascript"></script>
@@ -21,7 +23,7 @@
 		template:'<div>{{message}}</div><button v-on:click = "doSom">点我</button>', 
 		data: function(){
 			return{
-				message:"something"
+				message:"hello"
 			}
 		}, 
 		methods:{
@@ -31,9 +33,12 @@
 		} 
 	});
 	//期望使用的父组件数据的属性。可以是数组或对象。对象用于高级配置，如类型检查，自定义验证，默认值等。
-	Vue.component('parent',{
-		props: ['class', 'msg'],
-		template:'<div class={{class}}>{{msg}} parent! <my-component></my-component></div>', 
+	Vue.component('parent',//要么用'my-parent'横线式字符串,要么用myParent驼峰式
+	{
+		props:{  
+                myMessage: Number,  //这里可以通过props对象来进行数据的验证
+            },  //动态的父组件的数据
+		template:'<div>{{myMessage}} parent! <my-component></my-component></div>', 
 		components:{
 			"my-component":MyComponent
 		}
@@ -41,8 +46,12 @@
 	
 	//Vue.component('my-component', MyComponent);
 	//注意要在初始化实例之前注册组件
+	//http://blog.csdn.net/yuetingzhuying/article/details/49820689
 	var vm = new Vue({
-		el:'#app'
+		el:'#app', 
+		data:{
+			parentMsg:0
+		}
 	});
 
 
