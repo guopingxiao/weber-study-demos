@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>VueJS 懒加载信息</title>
+    <link rel="stylesheet" href="./static/reset.css">
+	<link rel="stylesheet" href="./static/pager.css">
+</head>
+<body>
+	<div id="app">
+			<pager></pager>
+			
+		<!-- 子组件模板 -->
+		<template id="list-template">
+		  <ol>
+			<li v-for="item of listContent">
+			  <p class="title">{{ item.title }}</p>
+			  <p class="date">{{ item.create_at }}</p>
+			  <p class="author">By: {{ item.author.loginname }}</p>
+			</li>
+		  </ol>
+		</template>
+
+		<!-- 父组件模板 -->
+		<template id="pager-template">
+		  <div id="pager-template">
+			<list :page="page"></list>  <!-- 实时的绑定page -->
+			<a class="button" @click="next" >加载更多</a>
+		  </div>
+		</template>	
+	</div>
+	
+<script src="./static/vue.min.js" type="text/javascript"></script>
+<script src="./static/reqwest.js"></script>
+<script>
+	
+	// 注册子组件
+	var List = Vue.component('list', {
+	  template: '#list-template',
+		data: function(){
+			return{
+				listContent: [], //页面装载的内容，
+				limit: 10,
+				domain: 'https://cnodejs.org/api/v1/topics'
+			}
+		},
+		props:{
+			page:{
+				type: Number,
+				default:1
+			}
+		},
+		created: function(){
+			this.getList();
+		},
+		watch:{   //watch page的变化，来请求页面的内容
+			page:function(){
+				this.getList();
+			}
+		},
+		methods:{
+			getList:function(){  //reqwest获得请求的数据
+				var _this = this;
+				reqwest({
+					url:this.domain,
+					data: {page: this.page, limit: this.limit}
+				})
+				.then(function(res){//注意，在这里异步调用的时候，要对this(List)进行缓存，否则是会漂移到window对象;
+					res.data.forEach(function(data){ //格式化数据
+						var d = new Date(data.create_at)
+						data.create_at = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+					})
+					_this.listContent = _this.listContent.concat(res.data);  //对请求的数据进行追加
+				},function(err){
+					console.log(err);
+				})
+			}
+		}
+	})
+
+	// 初始化父组件
+	Vue.component('pager',{
+	  template: '#pager-template',
+	  data:function(){
+		return{
+				page:1,
+		} 
+	  },
+	  components:{
+		'list':List
+	  },
+	  methods:{
+		  next:function () {
+		  this.page++;
+		}
+	 }
+	})
+	
+	//Vue.component('my-component', MyComponent);
+	//注意要在初始化实例之前注册组件
+	var vm = new Vue({
+		el:'#app'
+	});
+</script>
+</body>
+</html>
