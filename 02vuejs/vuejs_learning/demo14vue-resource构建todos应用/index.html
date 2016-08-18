@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ajax +Vue 构建todo应用</title>
+</head>
+<body>
+	<div class="container" id="app">
+		<list-app></list-app>
+	</div>
+
+	<template id="list-temp">
+		<input type="" v-model="notes">
+		<button @click="addItem">添加</button>
+		<h3>My Task({{remaining}})</h3>
+		<ul>
+			<li v-for="(key, todo) in lists">
+				{{todo.text}}
+				<span @click="removeItem(todo)">X</span>
+			</li>
+		</ul>
+	</template>
+	<script src="../js/vue.min.js" type="text/javascript"></script>
+	<script src="../js/zepto.min.js" type="text/javascript"></script>
+	<script src="../js/vue-resource.min.js" type="text/javascript"></script>
+	<script>
+		Vue.component('list-app',{
+			template:'#list-temp',
+			data: function(){
+				return{
+					notes:'',
+					lists:[{ text: 'Learn JavaScript', completed:true }]
+				}
+			},
+			created: function(){
+				var vm = this; 
+				//1.use zepto
+				//$.getJSON('php/data.php',{},function(data){
+					//vm.lists = data;//这里的this会漂移，不能直接this.lists = data; this-->指向zepto.js
+				//})
+				
+				//2.use vue-resource
+				/*
+				// global Vue object
+				Vue.http.get('/someUrl', [options]).then(successCallback, errorCallback);
+				Vue.http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+
+				// in a Vue instance
+				this.$http.get('/someUrl', [options]).then(successCallback, errorCallback);
+				this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+				*/
+			
+				this.$http.get('php/data.php','json').then(function(data){
+					debugger;
+					this.lists = JSON.parse(data.body);
+				});
+			},
+			
+			methods:{
+				removeItem:function(todo){
+					this.lists.$remove(todo);
+				},
+				addItem:function(){
+					this.$http.post('php/data.php',{'text':this.notes,'computed':true}).then(function(msg){
+
+					})
+				}
+			},
+			computed:{
+				remaining:function(){
+					return this.lists.filter(function(data){
+						return !data.computed;
+					}).length;
+				}
+			}
+			//组件的生命周期：（1）创建Vue实例，（2）建立观察的数据data,(3)初始化一些事件Events,调用created方法；
+			//(4)绑定作用范围el, (5)编译模板template,替换el （6）调用ready()，（7）清除数据绑定和组件，事件等（8）销毁
+		})
+		var vm = new Vue({
+			el:'body'
+			
+		})
+	</script>
+</body>
+</html>
