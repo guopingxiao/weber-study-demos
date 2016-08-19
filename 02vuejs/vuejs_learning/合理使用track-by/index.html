@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>合理使用track-by</title>
+</head>
+<body>
+<div id="app">
+	<div id="demo-1">
+		<p v-for="item in list">{{ item }}</p>
+	</div>
+	<div id="demo-2">
+		<p v-for="item in list" track-by="$index">{{ item }}</p>
+	</div>
+	<input @click="fun1">
+</div>	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data: {
+			list: [1, 2, 3]
+		},
+		methods:{
+			fun1(){
+			  this.list = [4,5,6];
+			}
+		}
+	})
+	
+合理使用track-by="$index",https://github.com/Coffcer/Blog/issues/2
+
+track-by是vue为循环提供的优化方法，可以复用多次v-for中id相同的dom。如果你的数据没有一个唯一的id，也可以选择使用track-by="$index"，但必须注意一些副作用。
+
+举个例子:
+
+new Vue({
+    data: {
+        list: [1, 2, 3]
+    }
+})
+<div id="demo-1">
+    <p v-for="item in list">{{ item }}</p>
+</div>
+<div id="demo-2">
+    <p v-for="item in list" track-by="$index">{{ item }}</p>
+</div>
+这时候执行this.list = [4, 5, 6]，可以通过F12观察到，demo-1里的dom被全部删除，然后重新循环list生成dom，而demo-2不会删除dom，只是把他们的text格子修改为4，5，6。这就是track-by="$index"的效果，复用了两次v-for中$index相同的dom。
+
+这是一个很好的优化方法，但不是所有场景都适用，比如循环中包含表单控件或子组件时，由于dom并不会被删除重新生成，会导致第二次执行的v-for，原有表单控件的值不会改变.
+</script>
+</body>
+</html>
