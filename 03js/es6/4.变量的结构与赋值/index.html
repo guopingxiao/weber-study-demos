@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>变量的解构与赋值</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+	//1.数组的解构赋值
+	let [a,b,c] = [1,2,3];
+
+	let [foo, [[bar], baz]] = [1, [[2], 3]];
+	foo // 1
+	bar // 2
+	baz // 3
+
+	let [ , , third] = ["foo", "bar", "baz"];
+	third // "baz"
+
+	let [x, , y] = [1, 2, 3];
+	x // 1
+	y // 3
+
+	let [head, ...tail] = [1, 2, 3, 4];
+	head // 1
+	tail // [2, 3, 4]
+
+	let [x, y, ...z] = ['a']; //解构不成功，undefined；
+	x // "a"
+	y // undefined
+	z // []
+
+
+	//2.数组指定默认值。
+
+	var [foo = true] = [];
+	foo // true
+
+	[x, y = 'b'] = ['a']; // x='a', y='b'
+	[x, y = 'b'] = ['a', undefined]; // x='a', y='b'
+
+
+	//3.对象的解构 -- 可以是不同的顺序
+	var { bar, foo } = { foo: "aaa", bar: "bbb" };
+	foo // "aaa"
+	bar // "bbb"
+
+	var { baz } = { foo: "aaa", bar: "bbb" };
+	baz // undefined
+
+	//属性赋值
+	var { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+	baz // "aaa"
+	foo // error: foo is not defined ，真正被赋值的是 baz,而不是模式foo
+
+	let obj = { first: 'hello', last: 'world' };
+	let { first: f, last: l } = obj;
+	f // 'hello'
+	l // 'world'
+
+
+	//4.对象指定默认值
+	var {x = 3} = {};
+	x // 3
+
+	var {x, y = 5} = {x: 1};
+	x // 1
+	y // 5
+
+	//5.字符串解析--类数组对象，有length属性
+	const [a, b, c, d, e] = 'hello';
+	a // "h"
+	b // "e"
+	c // "l"
+	d // "l"
+	e // "o"
+
+	//解构属性length
+	let {length : len} = 'hello';
+	len // 5
+
+	//函数的解构
+	function add([x, y]){
+	  return x + y;
+	}
+
+	add([1, 2]); // 3
+
+	// 6.用途
+	// （1）交换变量的值
+	[x, y] = [y, x];
+
+	// (2)函数返回多个值
+
+
+	function example() { // 返回一个数组
+	  return [1, 2, 3];
+	}
+	var [a, b, c] = example();
+
+	function example() {// 返回一个对象
+	  return {
+	    foo: 1,
+	    bar: 2
+	  };
+	}
+	var { foo, bar } = example();
+
+	// (3)提取JSON数据
+	var jsonData = {
+	  id: 42,
+	  status: "OK",
+	  data: [867, 5309]
+	};
+
+	let { id, status, data: number } = jsonData;
+
+	console.log(id, status, number);
+	// 42, "OK", [867, 5309]
+
+	//(4)指定参数默认值 ，避免var foo = config.foo || 'default foo';
+	$.ajax = function (url, 
+	{
+	  async = true,
+	  beforeSend = function () {},
+	  cache = true,
+	  complete = function () {},
+	  crossDomain = false,
+	  global = true,
+	  // ... more config
+	}) {
+	  // ... do stuff
+	};
+	</script>
+</body>
+</html>

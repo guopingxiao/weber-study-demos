@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>模板字符串</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<script type="text/javascript">
+	var data1="横刀";
+	var result=`我自${data1}向天笑！`;
+	console.log(result);
+
+	let data = {item1:'横刀', item2:'昆仑'};
+	var result=`
+	        我自${data.item1}向天笑，
+	        去留肝胆两${data.item2}！
+	`;
+	console.log(result);
+</script>
+	
+</body>
+</html>

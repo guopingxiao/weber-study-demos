@@ -1,3 +1,4 @@
+vue.js群：364912432
 2016/08/02
 http://haoqiao.me/2015/10/10/knowledge-point2.html
 http://vue-js.com/topic/56cfc64965cf1c422e006834

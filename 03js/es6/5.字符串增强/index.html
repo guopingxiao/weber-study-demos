@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>字符串增强</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+	// 1.字符的Unicode表示法
+	
+	"\u0061";// "a"
+	
+	 "\u{20BB7}";// "𠮷",超出码点用大括号括住;
+
+	//2.新增API，
+	
+	//判断是否包含特定字符串includes(), 
+	//开始startsWith(), 
+	//结尾endsWith()
+	//repeat方法返回一个新字符串，表示将原字符串重复n次。
+
+	'x'.repeat(3); // "xxx"
+	'hello'.repeat(2); // "hellohello"
+	'na'.repeat(0); // ""
+
+	//padStart()，padEnd()字符串填充
+	
+	//3.字符串模板
+	$('#result').append(
+	  'There are <b>' + basket.count + '</b> ' +
+	  'items in your basket, ' +
+	  '<em>' + basket.onSale +
+	  '</em> are on sale!'
+	);
+
+	//ES6单撇号
+	$('#result').append(`
+	  There are <b>${basket.count}</b> items
+	   in your basket, <em>${basket.onSale}</em>
+	  are on sale!
+	`);
+	
+	
+
+	</script>
+</body>
+</html>
