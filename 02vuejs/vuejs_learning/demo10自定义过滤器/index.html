@@ -7,6 +7,12 @@
 <body>
 	<div id= "app">
 		{{msg | filter1}}
+		<p>{{ name | capitalize}}</p>
+		<p>{{ name | uppercase}}</p>
+		<p>{{ job | lowercase}}</p>
+<!-- 		<p>{{ money | currency}}</p>
+		<p>{{ count }} {{ count | pluralize 'item'}}</p> -->
+		<p>{{ json | json}}</p>
 	</div>
 
 	
@@ -17,10 +23,29 @@
 	Vue.filter('filter1', function(val) {
 		return val.substring(0,2);
 	});
+	Vue.filter('capitalize', value=>{
+		if (!value && value !== 0) return ''
+    	value = value.toString()
+    	return value.charAt(0).toUpperCase() + value.slice(1)
+	});
+	Vue.filter('uppercase', value=>{
+		return (value || value === 0)? value.toString().toUpperCase(): ''
+	});
+	Vue.filter('lowercase', value=>{
+		return (value || value === 0)? value.toString().toLowerCase(): '';
+	});
 	var vm = new Vue({
 		el:'#app', 
 		data:{
-			msg:'hello'
+			msg:'hello',
+			name: 'ddfe',
+			job: 'FE',
+			money: '123456',
+			count: '2',
+			json: {
+				name: 'DDFE',
+			  id: 1
+			}
 		}
 		
 	});

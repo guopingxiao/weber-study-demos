@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="name" content="content" charset="utf-8">
+	<title>自定义过滤器</title>
+</head>
+<body>
+	<div id= "app">
+		<p>-----------------原数据-------------------</p>
+
+		<p>{{products | json}}</p>
+
+		<p>-----------------过滤名字和价格-------------------</p>
+		<li v-for="product in products">
+	      {{ product.name | capitalize }} - {{ product.price | currency }}
+		</li>
+
+		<p>------------------使用FilterBy过滤器------------------</p>
+
+		<li v-for="product in products | filterBy 'electronics' in 'category' ">
+      		{{ product.name | capitalize }} - {{ product.price | currency }}
+		</li>
+
+		<p>------------------使用FilterBy过滤器，多字段------------------</p>
+
+		<li v-for="product in products | filterBy 'electronics' in 'category'  'name' ">
+      		{{ product.name | capitalize }} - {{ product.price | currency }}
+		</li>
+
+		<p>------------------使用OrderBy过滤器升序------------------</p>
+		<ul>
+	       <li v-for="product in products
+	                   | filterBy 'electronics' in 'category'
+	                   | orderBy  'name' "
+	       >
+	            {{ product.name | capitalize }} - {{ product.price | discount2 10 | currency }}
+	      </li>
+		</ul>
+
+		<p>------------------使用OrderBy过滤器降序------------------</p>
+		<ul>
+			<li v-for="product in products
+	                   | filterBy 'electronics' in 'category'
+	                   | orderBy  'name' -1"
+	        >
+	            {{ product.name | capitalize }} - {{ product.price | discount | currency }}
+	       </li>
+		</ul>
+
+参见：<a href="https://segmentfault.com/a/1190000005027001">自定义过滤器</a>
+	</div>
+	
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script>
+
+    Vue.filter('discount', value=>{
+    	return value*0.5;
+    });
+	new Vue({
+        el : 'body',
+        data : {
+              products : [
+                    {name: 'microphone', price: 25, category: 'electronics'},
+                    {name: 'laptop case', price: 15, category: 'accessories'},
+                    {name: 'screen cleaner', price: 17, category: 'accessories'},
+                    {name: 'laptop charger', price: 70, category: 'electronics'},
+                    {name: 'mouse', price: 40, category: 'electronics'},
+                    {name: 'earphones', price: 20, category: 'electronics'},
+                    {name: 'monitor', price: 120, category: 'electronics'}
+              ]
+        },
+        filters:{
+        	discount2(value, cutoff){
+        		return value * cutoff/100;
+        	}
+        }
+  	});
+</script>
+</body>
+</html>
