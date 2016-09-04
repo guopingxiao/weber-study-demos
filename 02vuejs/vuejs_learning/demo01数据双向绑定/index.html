@@ -12,7 +12,14 @@
 	Quaid" required="required">
 	    <BUTTON type=submit>Go</BUTTON>
 	</FORM>
+	
+<!-- //属性绑定：v-bind
 
+<img v-bind:src="imageSrc">
+
+<div :class="{ red: isRed }"></div>
+<div :class="[classA, classB]"></div>
+<div :class="[classA, { classB: isB, classC: isC }]"></div> -->
 
 	<div id="app">
 		<h1>{{message}}</h1>
@@ -24,10 +31,11 @@
 	
 <script src="../js/vue.min.js" type="text/javascript"></script>
 <script>
+
 	new Vue({
 		el:'#app', //id = app
 		data:{
-			message:"Hello Vue!"//$data引用
+			message:"Hello Vue!"//$data引用v-text/v-html
 		}
 	});
 </script>

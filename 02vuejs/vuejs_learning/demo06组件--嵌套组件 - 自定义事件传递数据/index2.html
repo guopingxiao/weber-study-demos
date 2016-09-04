@@ -41,7 +41,7 @@
 	  methods: {
 		notify: function () {
 		  if (this.msg.trim()) {
-			this.$dispatch('child-msg', this.msg)  //这里也可以是this.$dispatch();按道理说要和events绑定，但是v-on好像也可以哦
+			this.$emit('child-msg', this.msg)  //这里也可以是this.$dispatch();按道理说要和events绑定，但是v-on好像也可以哦
 			this.msg = ''
 		  }
 		}
