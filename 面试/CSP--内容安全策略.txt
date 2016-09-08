@@ -1,0 +1,110 @@
+参考：http://netsecurity.51cto.com/art/201407/446775.htm
+http://web.jobbole.com/86409/
+http://www.w3cfuns.com/notes/14486/580c06048cde42c32fa721629b6765d9.html
+https://segmentfault.com/a/1190000005032978   
+
+   CSP（Content Security Policy）即内容安全策略，是一种基于内容的声明式网络应用程序机制，对缓解内容注入漏洞（例如XSS）的危害非常有效。
+
+       目标定位：有效减少内容注入漏洞发生后所造成的危害（而非防止内容注入漏洞的发生）
+
+      工作原理：通过一系列指令告诉客户端（如浏览器）被保护资源（如页面）内只允许加载和执行指令集中限定的内容，类似白名单机制，不满足限定条件的资源和内容将被客户端阻断或不被执行。
+
+      举例：页面响应头返回
+
+Content-Security-Policy: script-src *.qq.com *.gtimg.cn;
+       即告诉浏览器：该页面只允许加载qq.com和gtimg.cn子域下的js文件，其他域名的js内容以及任何内敛脚本都会被浏览器阻止。
+
+       限制范围：当前页面本身内容以及加载到当前页面的任何内容（包括页面加载完后通过js异步加载的内容）。
+如何使用
+       很简单，只要告诉浏览器页面内允许加载和执行的内容的规则即可，之后的事情浏览器会自动完成。
+
+1、告知方式
+
+      方式一、通过页面响应头Content-Security-Policy
+
+      特点：通过服务端配置即可对多个页面有效，一旦部署只要浏览器支持CSP标准，则不符合策略的内容都将不被加载和执行。
+
+      适用场景：策略确定后用于线上最终部署
+
+      方式二、通过页面响应头Content-Security-Policy-Report-Only
+
+      特点：只上报不符合策略的相关信息，不会真正阻止内容加载和执行。
+
+      适用场景：初步策略确定后部署到线上进行验证观察，通过上报信息来指导策略调整。
+
+      方式三、通过页面头部meta标签
+
+       <meta http-equiv="Content-Security-Policy" content="CSP指令">
+
+       特点：实现简单（直接在页面中添加即可），只对当前页面有效，部分指令（如report-uri，frame-ancestors,sandbox等）无效。
+
+      适用场景：策略制定初期对所制定的策略进行测试。
+
+ 
+
+2、服务器配置
+
+      上面的方式一和二都需要在服务器端进行配置，来返回CSP响应头信息，配置方法如下：
+
+      Apache服务器，在httpd.conf或.htaccess文件中添加：
+
+Header set Content-Security-Policy "具体的CSP策略指令"
+       Nginx服务器在nginx.conf文件相应位置添加：
+
+add_header Content-Security-Policy "具体的CSP策略指令";
+
+
+通过CSP我们能在XSS漏洞产生不可逆转的影响之前捕获到，能防御大部分的XSS攻击。
+
+<?php $token = CommUtils::getToken(); ?>
+    <div class="box_all operating reserve_main">
+        <iframe src=""  id="iframeid" width="100%" height="800px" frameborder="0"  ></iframe>
+   </div>
+<script>
+    $(function(){
+        var pageId= '692e6657e227438fb36eb4d0075c3355';
+        Setiframe(pageId);
+    });
+    function Setiframe(pageId){
+        var gameid = Cookie.get('gameid_oa');
+        var iframeUrl='http://epr.oa.com/tiem/Home/Page?app=f9d2221f83764c788b89003dc1efbac6&page=';
+        iframeUrl+=pageId;
+        iframeUrl+='&:gameid='+ gameid;
+        iframeUrl+='&sysOptions={%22page%22:{%22headDisplay%22:0,%22footerDisplay%22:0,%22noticeDisplay%22:0}}';
+        $("#iframeid").attr("src",iframeUrl);
+    }
+</script>
+
+CSRF:跨站请求伪造===拿不到任何数据，伪造一些请求而已；
+
+(1)通过get传参，通过B网站伪造这个请求<img src="">src伪造这个请求；一张美图，诱惑你去点击；
+
+http://netsecurity.51cto.com/art/201407/446775.htm
+示例1：
+
+银行网站A，它以GET请求来完成银行转账的操作，如：
+
+http://www.mybank.com/Transfer.php?toBankId=11&money=1000
+危险网站B，它里面有一段HTML的代码如下：
+
+<img src=http://www.mybank.com/Transfer.php?toBankId=11&money=1000> 
+首先，你登录了银行网站A，然后访问危险网站B，噢，这时你会发现你的银行账户少了1000块……
+
+(2)改造，用POST进行传参===同样，他可以伪造post请求，通过嵌一个隐藏的iframe，iframe里面在嵌一个表单，
+标的的提交地址action就是http://www.mybank.com/Transfer，这样在表单中默认一些信息，当你点击的时候就默认提交表单
+发送post请求
+
+理解上面的3种攻击模式，其实可以看出，CSRF攻击是源于WEB的隐式身份验证机制!WEB的身份验证机制虽然可以保证一个请求是来自于某个用户的浏览器，但却无法保证该请求是用户批准发送的!
+
+解决方案：
+a.token：服务器产生token,因为每个人的生成token的方法不一样，向在php中,可以动态页面<？php getToken() ？>的方式获取token，然后get请求的时候就放在url的屁股后面；服务器端比较这个token与服务器产生的是不是一样，这样就
+能避免伪造请求了；
+post方式要请求设置头
+$httpProvider.defaults.transformRequest = function(data) { 
+					data = Util.addToken(data ? data : {});
+					return "object" == typeof(data) ? $.param(data) : data;
+				}; 
+				$httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8";
+			
+  
+b.通过 referer 判定来源页面：referer 是在 HTTP Request Head 里面的，也就是由请求的发送者决定的。如果我喜欢，可以给 referer 任何值。

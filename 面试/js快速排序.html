@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>js快速排序</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html　　
+		快速排序的三步骤，其实就是前两部，第三步，直接迭代输出
+	（1）在数据集之中，选择一个元素作为"基准"（pivot）。
+　　（2）所有小于"基准"的元素，都移到"基准"的左边；所有大于"基准"的元素，都移到"基准"的右边。
+　　（3）对"基准"左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止。*/
+
+		
+		
+		
+		
+		function quickSort(arr){
+			if(arr.length <= 1){
+				return arr;
+			}
+			var pivotIndex = Math.floor(arr.length/2);
+			var pivot = arr.splice(pivotIndex,1)[0];
+			var left = [],right =[];
+			for (var i = 0; i< arr.length; i++){
+				if (arr[i] < pivot){
+					left.push(arr[i]);
+				}else{
+					right.push(arr[i]);
+				}
+			}
+			return quickSort(left).concat(pivot,quickSort(right));
+		}
+		
+		var arr = [11,62,33,5,49,27,4,53,33,17];
+		console.log(quickSort(arr));
+
+
+
+
+	</script>
+</body>
+</html>

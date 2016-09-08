@@ -1,0 +1,66 @@
+http://guowenfh.github.io/2015/12/18/Ajax-elementary-course-1/
+
+通过ajax的readyState的值，我们可以知道当前的这个http请求处于什么状态。对于web的调试是比较重要的。
+　　readyState 状态说明： 
+(0)未初始化 
+　　此阶段确认XMLHttpRequest对象是否创建，并为调用open()方法进行未初始化作好准备。值为0表示对象已经存在，否则浏览器会报错－－对象不存在。 
+　　这里还有一个原因，就是调用open()方法失败，比如ajax进行跨域访问的时候，执行到open()函数会提示没有权限，这时在执行ajax的时候readyState的状态始终是0.
+(1)载入 
+　　此阶段对XMLHttpRequest对象进行初始化，即调用open()方法，根据参数(method,url,true)完成对象状态的设置。并调用send()方法开始向服务端发送请求。值为1表示正在向服务端发送请求。 
+(2)载入完成 
+　　此阶段接收服务器端的响应数据。但获得的还只是服务端响应的原始数据，并不能直接在客户端使用。值为2表示已经接收完全部响应数据。并为下一阶段对数据解析作好准备。 
+(3)交互 
+　　此阶段解析接收到的服务器端响应数据。即根据服务器端响应头部返回的MIME类型把数据转换成能通过responseBody、responseText或responseXML属性存取的格式，为在客户端调用作好准备。状态3表示正在解析数据。 
+(4)完成 
+　　此阶段确认全部数据都已经解析为客户端可用的格式，解析已经完成。值为4表示数据解析完毕，可以通过XMLHttpRequest对象的相应属性取得数据。 
+　　这时它的子状态status如果等于404，就说明是页面没有找到。一般是因为url填写错误。
+
+　　概而括之：
+　　整个XMLHttpRequest对象的生命周期应该包含如下阶段： 创建－初始化请求－发送请求－接收数据－解析数据－完成 。在具体应用中，明确了readyState的五个状态（XMLHttpRequest对象的生命周期各个阶段）的含义，就可以消除对Ajax核心的神秘感，迅速把握其实质，对减少学习中的挫折感和增强自信心都极其有益。
+0: XmlHttpRequest对象刚被创建出来，还未初始化，即open方法没有被调用过。此时，除了open和onreadystatechange之外，访问其它任何的方法或属性，都是无效的。原因显而易见。
+
+1: HTTP请求已被创建，但还没有发送出去，即open已被调用过。这时候，访问xhr的属性，比如status，也是无效的，因为HTTP连接还没有建立。但是可以调用abort把HTTP请求重置，即回到0状态。
+
+2: HTTP请求已发送，并且服务器已返回HTTP报头。此时，可以通过getResponseHeader来查看所需的HTTP报头。
+
+3: 收到服务器响应的内容。对于readyState = 3，readystatechange的回调方法可能会被调用多次。因为服务器可能会返回大量数据，使得客户端一次收不完。至于调用的频率，没有定数。由于一些限制，虽然已经得到了一部分的数据，但是responseText、responseStream和responseXML这些属性，依然是不能访问的。
+
+4: HTTP通讯结束。此时所有的属性都可以访问了。如果所请求的数据不是XML格式的，responseXML将不会被初始化。此时调用abort也可以重置状态，但是没什么意义。
+https://segmentfault.com/a/1190000002789203
+
+https://segmentfault.com/a/1190000000691919
+XMLHttpRequest对象；通过监听xhr对象的onreadystatechange事件，来判定xhr请求与后台的交互过程到了哪一步，应该进行那些操作；
+readyState 0: 表示已经建立了xhr对象；并进行一些初始化的操作；
+readyState 1: 载入xhr对象，调用open()方法，准备请求的方法，请求的地址或者接口，以及是否要异步加载；
+readyState 2: 发送请求，调用send(),响应服务器的数据；
+readyState 3: 接收服务器响应数据，并解析数据，解析为指定格式的数据；比如XML，Text类型的数据；
+readyState 4: 表示全部数据全部解析完毕。
+
+function xhrDemo(){
+   var　xhr = new XMLHttpRequest();
+   xhr.open('get',url,true);
+   xhr.onreadystatechange = function(xhr){
+	 if(xhr.readyState ==4 && xhr.status = 200){
+	    xhr.responseText;
+	 }
+   }
+   xhr.send('tel='+tel+'&pwd='+pwd);
+}
+好文：https://segmentfault.com/a/1190000006737732
+优点：（1）采用异步的方式，动态加载页面，而无刷新页面。（2）要什么就请求什么，这样就减少了一些不必要的数据；（3）ajax运行在客户端的，可以减少服务端的压力；
+缺点：（1）正因为没有刷新页面，所以没有back按钮，也不能保存书签，不能分享了（2）ajax暴露了一些与服务端的交互细节，所以有一定的安全隐患；
+
+$.ajax({
+	method:'',
+	url:'',
+	data:{},
+	success:function(data){}
+
+})
+
+GET一般是向服务器请求数据，参数拼接在url后面；数据量不大的 情况下，请求的数据不敏感的情况；
+xhr.open('get', 'xzavier?name=' + name + '&sex='+ sex , true);
+POST修改服务器数据；数据量较大，对于一些不可预知的输入参数；表单提交的一些数据；
+而是通过send()方法向服务器提交数据。向服务器发送POST请求由于解析机制的原因，需要进行请求头部的处理。
+
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

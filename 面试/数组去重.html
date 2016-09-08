@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>原型链</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		
+		var arr = [1,2,3,1,2,2];
+		function filterArray(arr){
+			var tmp = [];
+			for (var i =0, len= arr.length; i<len; i ++){
+				if (tmp.indexOf(arr[i]) == -1) { //没找到就加入；
+					tmp.push(arr[i])
+				};
+			}
+			return tmp;
+		}
+
+		var arr2 = filterArray(arr);
+		console.log(arr2);
+
+
+
+	</script>
+</body>
+</html>
