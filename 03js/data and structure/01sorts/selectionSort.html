@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS快速排序</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//1.分成若干组之后，对每一组2个或1个进行排序，然后递归调用就好；坑：因为splice这些方法会直接改变数组，所以，length要实时的获得，不能先缓存起来；
+	function quickSort(arr){
+    var len = arr.length;
+    if(len<=1){
+      return arr;
+    }
+    var pivotIndex = Math.floor(arr.length/2),
+        pivot = arr.splice(pivotIndex,1)[0],
+        left =[],
+        right = [];
+    for(var i = 0; i< arr.length; i++){
+      if(arr[i] < pivot){
+        left.push(arr[i]);
+      }else{
+        right.push(arr[i]);
+      }
+    }
+    return quickSort(left).concat(pivot,quickSort(right));
+  }
+	var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+    console.log(quickSort(arr));
+</script>
+</body>
+</html>

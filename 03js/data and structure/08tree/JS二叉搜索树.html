@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS集合</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*二叉搜索树，左节点 < 根节点   < 右节点*/
+    function BinarySearchTree(){
+      var Node = function(key){
+        this.key = key;
+        this.left =null;
+        this.right = null;
+      }
+      var root = null;
+
+      this.insert = function(key){
+
+      }
+
+      this.search = function (key){
+
+      }
+
+      //先序遍历
+      this.preOrderTraverse = function(callback){
+        this.preOrderTraverseNode(root, callback);
+      }
+
+      //中序遍历遍历
+      this.middleOrderTraverse = function(callback){
+        this.middleOrderTraverseNode(root, callback);
+      }
+
+      //后续遍历
+      this.postOrderTraverse = function(callback){
+        this.postOrderTraverseNode(root, callback);
+      }
+
+      this.min = function(){
+
+      };
+
+      this.max = function(){
+
+      };
+
+      this.remove = function(key){
+        
+      };
+    }
+
+
+
+</script>
+</body>
+</html>

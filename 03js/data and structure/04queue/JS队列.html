@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS队列</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var Queue = function(){
+    var items = [];
+    this.inQueue = function(element){
+      items.push(element);
+    }
+    this.outQueue = function(){
+      return items.shift();
+    }
+    this.front = function(){
+      return items[0];
+    }
+    this.clear = function(){
+      items = [];
+    }
+    this.size = function(){
+      return items.length;
+    }
+    this.isEmpty = function(){
+      return (items.length == 0) ? true : false;
+    }
+    this.print = function(){
+      console.log(items.toString());
+    }
+  }
+  var queue = new Queue();
+  console.log(queue.isEmpty());
+  queue.inQueue('Hello');
+  queue.inQueue('World');
+  console.log(queue.size());
+  console.log(queue.front());
+  console.log(queue.outQueue());
+  console.log(queue.front());
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>JS栈</title>
+</head>
+<body>
+<script type="text/javascript">
+  
+  function Stack(){
+    var items = [];
+    this.push = function(element){
+      return items.push(element);
+    }
+
+    this.pop = function(){
+      return items.pop();
+    }
+
+    this.peek = function(){
+      return items[items.length -1 ];
+    }
+
+    this.isEmpty = function(){
+      return items.length == 0;
+    }
+
+    this.size = function(){
+      return items.length;
+    }
+
+    this.print = function(){
+      console.log(items.toString());
+    }
+  }
+
+  // 栈的使用实例二：实现任何进制数的转换
+  function DataTansfer(num,base){
+    var stack = new Stack(),
+    yushu,
+    digitals = '0123456789ABCDEF',
+    result = '';
+    while(num>0){
+      yushu  = Math.floor(num % base);
+      stack.push(yushu);
+      num = Math.floor(num/base);
+    }
+    while(!stack.isEmpty()){
+      result += digitals[stack.pop()];
+    }
+    return result;
+  }
+
+  console.log(DataTansfer(10010,2));
+  console.log(DataTansfer(10010,8));
+  console.log(DataTansfer(10010,10));
+  console.log(DataTansfer(10010,16));
+
+
+
+</script>
+</body>
+</html>

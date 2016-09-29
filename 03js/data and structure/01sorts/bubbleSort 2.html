@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS冒泡排序02</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//1.改进思路，每次交换后，其实只要交换到pos位置就可以了，用一个标志位记录最后一次交换的位置就好了；
+
+	function bubbleSort(arr){
+    var i = arr.length-1;
+    while(i > 0){
+      var pos = 0; //每趟开始时,无记录交换
+      for(var j= 0; j<i; j++){
+        if(arr[j] > arr[j+1]){
+          pos = j;
+          [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+        }
+      }
+      i = pos; //走完一趟，记录交换的位置；
+    }
+    return arr;
+	}
+	var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+    console.log(bubbleSort(arr));
+</script>
+</body>
+</html>

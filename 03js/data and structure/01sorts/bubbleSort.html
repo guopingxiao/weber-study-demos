@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS冒泡排序01</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//1.两两交换，大的在后面，小的在前面，每次交换后最大的在后面
+	function bubbleSort(arr){
+		var len = arr.length;
+		for(var i = 0; i < len; i++){  //外面控制比较的趟数
+          for(var j = 0; j< len-1-i;j++){ //里面控制交换的次数
+          	if(arr[j] > arr[j+1]){
+          		/*var temp = arr[j];
+          		arr[j] = arr[j+1];
+          		arr[j+1] = temp; */
+          		//ES6写法
+          		[arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+          	}
+          } 
+		}
+        return arr;
+	}
+	var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+    console.log(bubbleSort(arr));
+</script>
+</body>
+</html>

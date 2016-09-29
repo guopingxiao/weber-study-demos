@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS数组方法</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function fn1(){//数组的连接
+    var zero = 0;
+    var positiveNumbers = [1,2,3];
+    var negativeNumbers = [-3,-2,-1];
+    var numbers = negativeNumbers.concat(zero, positiveNumbers);
+    return numbers;
+  }
+  //console.log(fn1());
+
+  function isEven(x){
+    return (x%2 == 0) ? true: false;
+  }
+
+  var arr =[1,2,3,4,5,6,7,8,9,10];
+  //var result = arr.every(isEven);
+  var result2 = arr.some(isEven);
+  //console.log(result);
+  //console.log(result2);
+
+  /*console.log(arr.filter(function(x){
+    return (x%2==0);
+  })); //[2, 4, 6, 8, 10]*/
+
+/*var result = arr.reduce(function(pre,curr){
+    return pre + curr;
+  });
+  console.log(result)*/
+
+  var numbers =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+  //console.log(numbers.sort());
+  console.log(numbers.sort(function(a, b){
+    return a-b;
+  }));
+
+
+  var friends = [
+    {name: 'John', age: 30},
+    {name: 'Ana', age: 20},
+    {name: 'Chris', age: 25}
+  ];
+  function comparePerson(a, b){
+    if (a.age < b.age){
+      return -1
+    }
+    if (a.age > b.age){
+      return 1
+    }
+    return 0;
+  }
+  console.log(friends.sort(comparePerson));
+
+
+</script>
+</body>
+</html>

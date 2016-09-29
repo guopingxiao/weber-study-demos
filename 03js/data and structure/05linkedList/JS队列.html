@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS队列</title>
+</head>
+<body>
+<script type="text/javascript">
+	function LinkedList(){
+      function Node(element){
+        this.element = element;
+        this.next = null;
+      }
+
+      this.head = null;
+      this.length = 0;
+
+      this.append = function(element){
+        var node = new Node(element),
+            current;
+            
+        if(this.head == null){
+          this.head = node;
+        }else{
+          current = this.head;
+          while(current.next){
+            current = current.next;
+          }
+        current.next = node;
+        }
+        this.length ++;
+      }
+
+      this.removeAt = function(position){
+        var current = this.head,
+        index = 0,
+            prev;
+        if(position > -1 && position < this.length){ //检查越界值
+          if (position == 0){  //删除第一项，将head指向第一个元素即可；
+            this.head = current.next;
+          }
+          else{
+            while(index++ < position){ //将previous与current的下一项链接起来：跳过current，从而移除它,此处找到前一项；
+              prev = current;
+              current = current.next;
+            }
+            prev.next = current.next; //此处跳过current；
+          }
+          this.length --;
+          return true;
+        }else{
+          return null;
+        }
+      }
+
+      this.insert = function(position, element){
+        var current = this.head,
+        index = 0,
+        prev,
+        node = new Node(element);
+        if(position> -1 && position < this.length){
+          if(position == 0){
+            this.head = node;
+            node.next = current;
+          }else{
+            while(index++ < position){
+              prev = current;
+              current = current.next;
+            }
+            prev.next = node;
+            node.next = current
+          }
+          this.length ++;
+        }else{
+          return false;
+        }
+      }
+
+      this.indexOf = function(element){
+        var current = this.head;
+        index = -1;
+        while(current){
+          index ++;
+          if(current.element === element){
+            return index;
+          }
+          current = current.next;
+        }
+          return -1;
+      }
+
+      this.remove = function(element){
+        var index = this.indexOf(element);
+        this.removeAt(index);
+      }
+
+      this.isEmpty = function(){
+        return this.length === 0;
+      }
+
+      this.size = function(){
+        return this.length;
+      }
+
+      this.getHead = function(){
+        return this.head;
+      }
+
+      this.toString = function(){
+        var current = this.head,
+            string = '';
+            while(current){
+              string += current.element + '-->';
+              current = current.next;
+            }
+            return string;
+      }
+
+
+
+  }
+
+  var linkedList = new LinkedList();
+  linkedList.append(10);
+  linkedList.append(15);
+  linkedList.append(20);
+  linkedList.append(25);
+  linkedList.append(30);
+  linkedList.append(35);
+  console.log(linkedList.toString());
+  linkedList.removeAt(2);
+  console.log(linkedList.toString());
+  linkedList.insert(2,111);
+	console.log(linkedList.toString());
+  console.log(linkedList.indexOf(10))
+
+
+
+
+</script>
+</body>
+</html>

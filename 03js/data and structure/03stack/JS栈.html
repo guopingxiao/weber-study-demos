@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS栈</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function Stack(){
+	    var items = [];
+	    this.push = function(element){
+	      return items.push(element);
+	    }
+
+    this.pop = function(){
+      return items.pop();
+    }
+
+    this.peek = function(){
+      return items[items.length -1 ];
+    }
+
+    this.isEmpty = function(){
+      return items.length == 0;
+    }
+
+    this.size = function(){
+      return items.length;
+    }
+
+    this.print = function(){
+      console.log(items.toString());
+    }
+  }
+
+  var stack = new Stack();
+  console.log(stack.isEmpty());
+
+  stack.push(1);
+
+  stack.push(2);
+
+  stack.push(3);
+
+  console.log(stack.peek());
+
+  console.log(stack.pop());
+
+  console.log(stack.size());
+
+  stack.print();
+
+
+
+</script>
+</body>
+</html>

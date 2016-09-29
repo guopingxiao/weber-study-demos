@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS队列</title>
+</head>
+<body>
+<script type="text/javascript"> 
+
+  function CreateElement(element,priority){
+      this.element = element;
+      this.priority = priority;
+    }
+
+  function priorityQueue(){
+    var items = [];
+    this.inQueue = function(element,priority){
+      var prioElement = new CreateElement(element,priority);
+      if(this.isEmpty()){
+        items.push(prioElement);
+      }
+      else{
+        var flag = false;
+        for(var i = 0;i<items.length; i++){
+          if(prioElement.priority < items[i].priority){//从头开始，优先级最高（priority值越小）的放在最前面，
+            items.splice(i,0,prioElement);
+            var flag = true;
+            break; //插入后中断循环；
+          }
+        }
+        if(!flag){
+          items.push(prioElement);
+        }
+      }
+    }
+    //其他的和Queue是一样的；
+    this.outQueue = function(){
+      return items.shift();
+    }
+    this.front = function(){
+      return items[0];
+    }
+    this.clear = function(){
+      items = [];
+    }
+    this.size = function(){
+      return items.length;
+    }
+    this.isEmpty = function(){
+      return (items.length == 0) ? true : false;
+    }
+    this.print = function(){
+      items.forEach(function(item){
+      console.log(item.element);
+      })
+    }
+  }
+
+  var priQueue = new priorityQueue();
+  priQueue.inQueue('World',2);
+  priQueue.inQueue('Hello',1);
+  priQueue.inQueue('Queue',2);
+
+  priQueue.print();
+
+
+
+
+</script>
+</body>
+</html>

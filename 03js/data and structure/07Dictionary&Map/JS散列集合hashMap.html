@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS散列表</title>
+</head>
+<body>
+<script type="text/javascript">
+    function HashTable(){
+      var table = [];
+
+      this.put = function(key, value){
+        var position = loseloseHashCode(key);
+        if (table[position] == undefined) { //{1}
+          table[position] = new LinkedList();
+        }
+         table[position].append(new ValuePair(key, value)); //{2}
+      };
+
+      this.get = function(key) {
+        var position = loseloseHashCode(key);
+        if (table[position] !== undefined){ //{3}
+          //遍历链表来寻找键/值
+          var current = table[position].getHead(); //{4}
+          while(current.next){ //{5}
+            if (current.element.key === key){ //{6}
+              return current.element.value; //{7}
+            }
+            current = current.next; //{8}
+          }
+          //检查元素在链表第一个或最后一个节点的情况
+          if (current.element.key === key){ //{9}
+            return current.element.value;
+          }
+        }
+        return undefined; //{10}
+      };
+
+      this.remove = function(key){
+        var position = loseloseHashCode(key);
+        if (table[position] !== undefined){
+          var current = table[position].getHead();
+          while(current.next){
+            if (current.element.key === key){ //{11}
+              table[position].remove(current.element); //{12}
+              if (table[position].isEmpty()){ //{13}
+                table[position] = undefined; //{14}
+              }
+              return true; //{15}
+            }
+            current = current.next;
+          }
+          // 检查是否为第一个或最后一个元素
+          if (current.element.key === key){ //{16}
+            table[position].remove(current.element);
+            if (table[position].isEmpty()){
+              table[position] = undefined;
+            }
+            return true;
+          }
+        }
+        return false; //{17}
+      }
+
+      function ValuePair(key, value){
+        this.key = key;
+        this.value = value;
+        this.toString = function(){
+          return '[' + this.key + '-->' + this.value + ']';
+        }
+      }
+    }
+
+    function loseloseHashCode (key){
+      var hash = 0;
+      for(var i =0; i < key.length; i++){
+        hash += key.charCodeAt(i);
+      }
+      return hash % 37;
+    }
+
+    // 创建更好的散列函数
+    function djb2HashCode(key) {
+      var hash = 5381; //{1}
+      for (var i = 0; i < key.length; i++) { //{2}
+        hash = hash * 33 + key.charCodeAt(i); //{3}
+      }
+      return hash % 1013; //{4}
+    };
+
+
+    var hash = new HashTable();
+    hash.put('Gandalf', 'gandalf@email.com');
+    hash.put('John', 'johnsnow@email.com');
+    hash.put('Tyrion', 'tyrion@email.com');
+    hash.put('Aaron', 'aaron@email.com');
+    hash.put('Donnie', 'donnie@email.com');
+    hash.put('Ana', 'ana@email.com');
+    hash.put('Jonathan', 'jonathan@email.com');
+    hash.put('Jamie', 'jamie@email.com');
+    hash.put('Sue', 'sue@email.com');
+    hash.put('Mindy', 'mindy@email.com');
+    hash.put('Paul', 'paul@email.com');
+    hash.put('Nathan', 'nathan@email.com');
+
+    console.log(hash.get('Jamie'));
+
+
+    function LinkedList(){
+      function Node(element){
+        this.element = element;
+        this.next = null;
+      }
+
+      this.head = null;
+      this.length = 0;
+
+      this.append = function(element){
+        var node = new Node(element),
+            current;
+            
+        if(this.head == null){
+          this.head = node;
+        }else{
+          current = this.head;
+          while(current.next){
+            current = current.next;
+          }
+        current.next = node;
+        }
+        this.length ++;
+      }
+
+      this.removeAt = function(position){
+        var current = this.head,
+        index = 0,
+            prev;
+        if(position > -1 && position < this.length){ //检查越界值
+          if (position == 0){  //删除第一项，将head指向第一个元素即可；
+            this.head = current.next;
+          }
+          else{
+            while(index++ < position){ //将previous与current的下一项链接起来：跳过current，从而移除它,此处找到前一项；
+              prev = current;
+              current = current.next;
+            }
+            prev.next = current.next; //此处跳过current；
+          }
+          this.length --;
+          return true;
+        }else{
+          return null;
+        }
+      }
+
+      this.insert = function(position, element){
+        var current = this.head,
+        index = 0,
+        prev,
+        node = new Node(element);
+        if(position> -1 && position < this.length){
+          if(position == 0){
+            this.head = node;
+            node.next = current;
+          }else{
+            while(index++ < position){
+              prev = current;
+              current = current.next;
+            }
+            prev.next = node;
+            node.next = current
+          }
+          this.length ++;
+        }else{
+          return false;
+        }
+      }
+
+      this.indexOf = function(element){
+        var current = this.head;
+        index = -1;
+        while(current){
+          index ++;
+          if(current.element === element){
+            return index;
+          }
+          current = current.next;
+        }
+          return -1;
+      }
+
+      this.remove = function(element){
+        var index = this.indexOf(element);
+        this.removeAt(index);
+      }
+
+      this.isEmpty = function(){
+        return this.length === 0;
+      }
+
+      this.size = function(){
+        return this.length;
+      }
+
+      this.getHead = function(){
+        return this.head;
+      }
+
+      this.toString = function(){
+        var current = this.head,
+            string = '';
+            while(current){
+              string += current.element + '-->';
+              current = current.next;
+            }
+            return string;
+      }
+  }
+
+</script>
+</body>
+</html>

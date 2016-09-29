@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS冒泡排序03</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//1.改进思路，双边冒泡;即找最大的也找最小的；
+
+	function bubbleSort(arr){
+    var low = 0;
+    var high = arr.length-1;
+    while(low < high){
+      for(var j = low; j< high; j++){
+        if(arr[j]>arr[j+1]){  //大于的往后移
+          [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+        }
+      }
+      high--;
+      for(var j = high; j> low; j--){
+        if(arr[j]<arr[j-1]){ //小于的往前移
+          [arr[j],arr[j-1]] = [arr[j-1],arr[j]];
+        }
+      }
+      low++;
+    }
+    return arr;
+	}
+	var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+    console.log(bubbleSort(arr));
+</script>
+</body>
+</html>

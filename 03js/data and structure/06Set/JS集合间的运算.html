@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS集合</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Set(){
+      var items ={};
+
+      this.has = function(value){
+          return value in items;
+      }
+
+      //增加一个元素
+      this.add = function(value){
+        if(!this.has(value)){
+          items[value] = value;
+          return true;
+        }else{
+          return false;
+        }
+      }
+
+      //删除一个元素
+      this.remove = function(value){
+        if(this.has(value)){
+          delete items[value];
+          return true;
+        }else{
+          return false;
+        }
+      }
+
+      //集合元素的值
+      this.values = function(){
+        return Object.keys(items);
+      }
+
+      //集合的大小
+      this.size = function(){
+        return Object.keys(items).length;
+      }
+
+      //清空集合
+      this.clear = function(){
+        items = {};
+      }
+
+      //集合的并集
+      this.union = function(otherSet){
+        var unionSet = new Set();
+        var values = this.values();
+        for(var i = 0; i<this.size(); i++){
+          unionSet.add(values[i]);
+        }
+        var values = otherSet.values();
+        for(var i =0; i < otherSet.size(); i++){
+          unionSet.add(values[i]);
+        }
+        return unionSet;
+      }
+
+      //集合的交集
+      this.interSection = function(otherSet){
+        var interSectionSet = new Set()
+        var values = this.values();
+        for(var i = 0; i<this.size(); i++){
+          if(otherSet.has(values[i])){
+            interSectionSet.add(values[i]);
+          }
+        }
+        return interSectionSet;
+      }
+
+
+      //集合的差集
+      this.diff = function(otherSet){
+        var diffSet = new Set();
+        var values = this.values();
+        for(var i=0; i< this.size(); i++){
+          if(!otherSet.has(values[i])){
+            diffSet.add(values[i]);
+          }
+        }
+        return diffSet;
+      }
+
+      //集合的子集判断
+      this.isSub = function(otherSet){
+        if (this.size()> otherSet.size()) {
+          return false;
+        }
+        var values = this.values();
+        for(var i=0; i< this.size();i++){
+          if(!otherSet.has(values[i])){
+            return false;
+          }
+        }
+        return true;
+      }
+  }
+
+  var set1 = new Set(),
+      set2 = new Set(),
+      set3 = new Set();
+  set1.add('a');
+  set1.add('b');
+
+  set2.add('a');
+  set2.add('c');
+  set2.add('d');
+
+  set3.add('a');
+  set3.add('b');
+  set3.add('c');
+  set3.add('d');
+
+  console.log(set1.union(set2).values());
+  console.log(set1.union(set3).values());
+  console.log(set1.interSection(set2).values());
+  console.log(set1.interSection(set3).values());
+  console.log(set1.diff(set2).values());
+  console.log(set1.diff(set3).values());
+  console.log(set1.isSub(set2));
+  console.log(set1.isSub(set3));
+
+</script>
+</body>
+</html>

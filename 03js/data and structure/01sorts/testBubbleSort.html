@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS冒泡排序03</title>
+</head>
+<body>
+<script type="text/javascript">
+	function bubbleSort(arr){
+    console.time('1.一般冒泡排序耗时');
+    var len = arr.length;
+    for(var i = 0; i < len; i++){  //外面控制比较的趟数
+          for(var j = 0; j< len-1-i;j++){ //里面控制交换的次数
+            if(arr[j] > arr[j+1]){
+              [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+            }
+          } 
+    }
+    console.timeEnd('1.一般冒泡排序耗时');
+    return arr;
+  }
+
+  function bubbleSort2(arr){
+    console.time('2.改进冒泡排序耗时');
+    var i = arr.length-1;
+    while(i > 0){
+      var pos = 0; //每趟开始时,无记录交换
+      for(var j= 0; j<i; j++){
+        if(arr[j] > arr[j+1]){
+          pos = j;
+          [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+        }
+      }
+      i = pos; //走完一趟，记录交换的位置；
+    }
+    console.timeEnd('2.改进冒泡排序耗时');
+    return arr;
+  }
+
+  function bubbleSort3(arr){
+    console.time('3.双边冒泡排序耗时');
+    var low = 0;
+    var high = arr.length-1;
+    while(low < high){
+      for(var j = low; j< high; j++){
+        if(arr[j]>arr[j+1]){  //大于的往后移
+          [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+        }
+      }
+      high--;
+      for(var j = high; j> low; j--){
+        if(arr[j]<arr[j-1]){ //小于的往前移
+          [arr[j],arr[j-1]] = [arr[j-1],arr[j]];
+        }
+      }
+      low++;
+    }
+    console.timeEnd('3.双边冒泡排序耗时');
+    return arr;
+  }
+	
+	var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48,3,144,328,55,447,15,36,26,27,2,46,4,19,560,48];
+  bubbleSort(arr)
+  console.log(bubbleSort(arr));
+    bubbleSort2(arr)
+  console.log(bubbleSort2(arr));
+    bubbleSort3(arr)
+  console.log(bubbleSort3(arr));
+</script>
+</body>
+</html>

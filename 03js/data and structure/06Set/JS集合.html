@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS集合</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Set(){
+      var items ={};
+
+      this.has = function(value){
+          return value in items;
+      }
+
+      /*this.has = function(value){
+        return items.hasOwnProperty(value);
+      }*/
+
+      //增加一个元素
+      this.add = function(value){
+        if(!this.has(value)){
+          items[value] = value;
+          return true;
+        }else{
+          return false;
+        }
+      }
+
+      //删除一个元素
+      this.remove = function(value){
+        if(this.has(value)){
+          delete items[value];
+          return true;
+        }else{
+          return false;
+        }
+      }
+
+      //集合元素的值
+      this.values = function(){
+        return Object.keys(items);
+      }
+      /*this.valuesLegacy = function(){
+        var keys =[];
+        for(var key in items){
+          keys.push(key);
+        }
+        return keys;
+      }*/
+
+      //集合的大小
+      this.size = function(){
+        return Object.keys(items).length;
+      }
+      /*this.countSize = function(){
+        var count = 0;
+        for(var prop in items){
+          if(items.hasOwnProperty(prop)){
+            count ++;
+          }
+        }
+        return count;
+      }*/
+
+      //清空集合
+      this.clear = function(){
+        items = {};
+      }
+    }
+
+    //使用Set
+    var set = new Set();
+    set.add('a');
+    set.add('b');
+    set.add('c');    
+    set.add(1);
+    set.add(2);
+    set.add(3);
+
+    console.log(set.values());
+    console.log(set.valuesLegacy());
+
+    console.log(set.has('a'));
+    console.log(set.has(1));
+    console.log(set.values());
+
+    console.log(set.remove(3));
+    console.log(set.remove('c'));
+    console.log(set.size());
+    console.log(set.countSize());
+    console.log(set.values());
+    set.clear();
+    console.log(set.size()); 
+    console.log(set.values());
+
+
+
+
+
+</script>
+</body>
+</html>

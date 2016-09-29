@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>JS栈</title>
+</head>
+<body>
+<script type="text/javascript">
+  
+  function Stack(){
+    var items = [];
+    this.push = function(element){
+      return items.push(element);
+    }
+
+    this.pop = function(){
+      return items.pop();
+    }
+
+    this.peek = function(){
+      return items[items.length -1 ];
+    }
+
+    this.isEmpty = function(){
+      return items.length == 0;
+    }
+
+    this.size = function(){
+      return items.length;
+    }
+
+    this.print = function(){
+      console.log(items.toString());
+    }
+  }
+
+  // 栈的使用实例一：十进制转二进制(带余除法)
+  function DataTansfer(num){
+    var stack = new Stack(),
+    yushu,
+    result = '';
+    while(num>0){
+      yushu  = Math.floor(num % 2);
+      stack.push(yushu);
+      num = Math.floor(num/2);
+    }
+    while(!stack.isEmpty()){
+      result += stack.pop().toString();
+    }
+    return result;
+  }
+
+  console.log(DataTansfer(100));
+
+
+
+</script>
+</body>
+</html>

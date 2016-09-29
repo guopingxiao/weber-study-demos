@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS队列</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var Queue = function(){
+    var items = [];
+    this.inQueue = function(element){
+      items.push(element);
+    }
+    this.outQueue = function(){
+      return items.shift();
+    }
+    this.front = function(){
+      return items[0];
+    }
+    this.clear = function(){
+      items = [];
+    }
+    this.size = function(){
+      return items.length;
+    }
+    this.isEmpty = function(){
+      return (items.length == 0) ? true : false;
+    }
+    this.print = function(){
+      console.log(items.toString());
+    }
+  }
+  
+  function hotPotate(nameList, nums){
+    var queue = new Queue();
+    for(var i =0;i<nameList.length;i++){
+      queue.inQueue(nameList[i]);
+    }
+    var elimilated = '';
+    while(queue.size()>1){
+      for(var j=0;j<nums;j++){
+        queue.inQueue(queue.outQueue());
+      }
+      elimilated = queue.outQueue();
+      console.log(elimilated+'被淘汰');
+    }
+    return queue.outQueue();
+  }
+
+  var names = ['A', 'B', 'C', 'D', 'E'],
+      nums = 8;
+  var winner = hotPotate(names, nums);
+  console.log('最终胜利者：' +　winner);
+
+
+
+
+</script>
+</body>
+</html>
