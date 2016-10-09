@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS集合</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function bag(){
+    var c = [3,5,2,7,4];
+    var v = [2,4,1,6,5];
+    var f = [];
+    for(var i = 0; i < 6; i++){
+      f[i] = [];
+      for(var j = 0; j < 10 ;j++)
+      {
+        f[i][j] = 0;
+      }
+    }
+    //f[i][v] = max{ f[i-1][v] , f[i-1][v - c[i]] + w[i]}
+    for(var i = 1; i < 5; i++){
+        for(var j = 1; j < 10 ;j++)
+        {
+            if(c[i] >= j)//如果背包的容量，放不下c[i]，则不选c[i]
+            {
+                  f[i][j] = f[i-1][j];
+            }        
+            else
+            {
+                f[i][j] = Math.max(f[i-1][j], f[i-1][j - c[i]] + v[i]);//转移方程式
+            }
+        }
+    }
+    console.log(f[5][9]);
+}
+
+bag();
+    
+
+
+
+</script>
+</body>
+</html>

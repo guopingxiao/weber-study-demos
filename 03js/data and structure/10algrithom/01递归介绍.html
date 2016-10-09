@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS集合</title>
+</head>
+<body>
+<script type="text/javascript">
+    var i= 0;
+    function recursiveFn(){
+      i ++;
+      recursiveFn();
+    }
+    try{
+      recursiveFn();
+    }catch(ex){
+      alert('i=' + i + 'error' + ex);
+    }
+
+
+
+</script>
+</body>
+</html>
