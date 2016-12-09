@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JS散列表</title>
+</head>
+<body>
+<script type="text/javascript">
+    function HashTable(){
+      var table = [];
+      this.put = function(key, value){
+        var position = loseloseHashCode(key);
+        table[position] = value;
+        console.log(position + '-->' + key);
+      }
+      this.get = function(key){
+        return table[loseloseHashCode(key)];
+      }
+      this.remove = function(key){
+        table[loseloseHashCode(key)] = undefined;
+      }
+    }
+
+    function loseloseHashCode (key){
+      var hash = 0;
+      for(var i =0; i < key.length; i++){
+        hash += key.charCodeAt(i);
+      }
+      return hash % 37;
+    }
+
+
+    var hash = new HashTable();
+    hash.put('Gandalf', 'gandalf@email.com');
+    hash.put('John', 'johnsnow@email.com');
+    hash.put('Tyrion', 'tyrion@email.com');
+
+    console.log(hash.get('Gandalf'));
+    console.log(hash.get('Loiane'));
+
+    hash.remove('Gandalf');
+    console.log(hash.get('Gandalf'));
+
+</script>
+</body>
+</html>

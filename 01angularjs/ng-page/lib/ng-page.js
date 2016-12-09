@@ -105,3 +105,45 @@
 				
 		}])
 })(angular);
+
+
+
+
+
+
+
+
+function chickenAndRabbit(foot,head)
+{
+    //兔子个数
+    var rabbit=foot/2-head;
+    //小鸡个数
+    var chicken=head-rabbit;
+    console.log("笼子里的鸡有"+ chicken +"头，兔子有"+rabbit+"头");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
