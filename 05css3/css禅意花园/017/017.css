@@ -1,0 +1,223 @@
+/* css Zen Garden submission 017 - 'Golden Mean' by Douglas Bowman, http://www.stopdesign.com/ */
+/* css released under Creative Commons ShareAlike License v1.0 - http://creativecommons.org/licenses/sa/1.0/  */
+/* All associated graphics copyright 2003,  Douglas Bowman*/
+
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the designer's written permission. */
+/* The CSS itself may freely be used for anything you wish, but the associated graphics belong to the designer. */
+/* What you may use - .css files. What you may not use - .jpg, .gif, and .png files. */
+
+
+/* Design and CSS created by Douglas Bowman */
+/* www.stopdesign.com */
+
+/* structure
+--------------------------------- */
+body {
+  margin:0;
+  padding:0;
+  background:#EBE8D0 url("bg_body.gif") repeat-x left top;
+  color:#333;
+  text-align:center;
+  font:x-small Georgia,Serif;
+  voice-family: "\"}\""; voice-family:inherit;
+  font-size:small;
+  } html>body {font-size:small;}
+.page-wrapper {
+  position:relative;
+  width:732px;
+  margin:0 auto;
+  text-align:left;
+  }
+.intro {
+  border:1px solid #A79355;
+  border-width:0 1px;
+  }
+
+
+/* hidden text
+--------------------------------- */
+h1, h2, h3 {
+  margin:0;
+  background-repeat:no-repeat;
+  background-position:left top;
+  }
+h1, h2, h3, .summary p:first-child {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  }
+
+  
+/* header and summary
+--------------------------------- */
+header h1 {
+  height:71px;
+  background:url("bg_zengarden.gif") no-repeat 35px 42px;
+  }
+header h2 {
+  height:115px;
+  background:url("bg_beautyof.jpg") no-repeat left top;
+  }
+.summary p:first-child {
+  height:76px;
+  margin:0;
+  background:url("bg_quicksum.gif") no-repeat 35px 18px;
+  }
+.summary p:last-child {
+  position:absolute;
+  top:78px;
+  right:35px;
+  width:200px;
+  margin:0;
+  font-size:93%;
+  line-height:1.3em;
+  text-align:right;
+  color:#A79355;
+  background-color:transparent;
+  }
+.summary p:last-child a:link, .summary p:last-child a:visited {
+  white-space:nowrap;
+  font:bold 92%/1.3em Verdana,Arial,Sans-serif;
+  text-transform:uppercase;
+  }
+
+
+/* preamble
+--------------------------------- */
+.preamble {
+  position:absolute;
+  top:304px;
+  right:0;
+  width:180px;
+  }
+.preamble h3 {
+  height:44px;
+  background-image:url("bg_road.gif");
+  }
+.preamble p {
+  margin:.5em 0;
+  font-size:93%;
+  font-style:italic;
+  line-height:1.7em;
+  color:#66472E;
+  background-color:transparent;
+  }
+
+
+/* supporting text
+--------------------------------- */
+.supporting {
+  margin:0 200px;
+  border:1px solid #A79355;
+  border-width:0 1px;
+  padding-bottom:8px;
+  border-bottom:8px solid #BDAF83;
+  }
+.supporting p {
+  margin:.75em 0;
+  line-height:1.5em;
+  padding:0 20px;
+  }
+.supporting h3 {
+  height:40px;
+  border:1px solid #A79355;
+  border-width:1px 0;
+  margin:1em 0 .5em;
+  background-color:#D9D98B;
+  }
+.explanation h3 {
+  height:80px;
+  background-image:url("bg_what.jpg");
+  border-top-width:0;
+  margin:0 0 10px;
+  }
+.participation h3 {background-image:url("bg_participation.jpg");}
+.benefits h3 {background-image:url("bg_benefits.jpg");}
+.requirements h3 {background-image:url("bg_requirements.jpg");}
+
+
+/* link list
+--------------------------------- */
+.sidebar {
+  position:absolute;
+  top:306px;
+  left:0;
+  width:180px;
+  }
+.sidebar h3 {height:23px;}
+.design-selection h3 {
+  height:41px;
+  background-image:url("bg_select.gif");
+  }
+.design-archives h3 {background-image:url("bg_archives.gif");}
+.zen-resources h3 {background-image:url("bg_resources.gif");}
+.sidebar ul {
+  margin:1em 0 1.5em;
+  padding:0;
+  font-size:93%;
+  list-style:none;
+  }
+.design-archives li, .zen-resources li {text-transform:lowercase;}
+.sidebar ul li {
+  background:url("icon_diamond.gif") no-repeat 2px 50%;
+  margin:0 0 .5em;
+  padding:0 0 0 14px;
+  line-height:1.5em;
+  }
+.sidebar li a:link, .sidebar li a:visited {
+  font-family:Verdana,Arial,Sans-serif;
+  font-weight:bold;
+  }
+.sidebar .design-selection li {
+  background:url("icon_pg.gif") no-repeat 0 15%;
+  color:#A79355;
+  }
+.sidebar .design-selection a:link, .sidebar .design-selection a:visited {display:block;}
+.sidebar .design-selection a.designer-name:link, .sidebar .design-selection a.designer-name:visited {
+  display:inline;
+  font-family:Georgia,Serif;
+  font-weight:normal;
+  color:#616623;
+  background-color:transparent;
+  text-transform:lowercase;
+  }
+
+
+/* footer
+--------------------------------- */
+footer {
+  background:#D9D98B url("bg_pattern.gif");
+  color:#fff;
+  margin:1.75em 0 0;
+  padding:10px 20px;
+  border:1px solid #A79355;
+  border-width:1px 0;
+  font:85% Verdana,Arial,Sans-serif;
+  text-align:center;
+  }
+footer a:link, footer a:visited {
+  padding:0 5px;
+  font-weight:normal;
+  }
+
+
+/* links
+--------------------------------- */
+a:link, a:visited {
+  color:#703F0E;
+  background-color:transparent;
+  font-weight:bold;
+  text-decoration:none;
+  }
+a:hover {
+  color:#616623;
+  background-color:transparent;
+  text-decoration:underline;
+  }
+
+
+/* misc
+--------------------------------- */
+abbr {border-width:0;}

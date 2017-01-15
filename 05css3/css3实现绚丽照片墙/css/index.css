@@ -1,0 +1,132 @@
+html, body, h2{
+	margin:0px;
+	padding:0px;
+}
+
+body{
+	background: #ccc;
+}
+.pic-container{
+	margin:0 auto;
+}
+.pic-container h2{
+	text-align: center;
+	padding: 30px;
+}
+
+.pic-container .pics{
+	position: relative;
+	margin: 80px auto;
+	width: 960px;
+	height: 450px;
+
+}
+
+.pics img{
+	position: absolute;
+/* 	transform: rotate(20deg); */
+	background: #fff;
+	padding: 5px;
+	border:1px solid #aaa;
+	z-index: 1;
+}
+
+.pics img:hover{
+	position: absolute;
+	background: #fff;
+	border:1px solid #666;
+	box-shadow: 12px 12px 15px rgba(50,50,50,0.4);
+	transform: rotate(0deg) 
+			   scale(1.3);
+	transition:all  1s ease-in-out;
+	z-index: 2;
+
+}
+
+.pic1{
+	left: 400px; 
+	top: 0; 
+	-webkit-transform: rotate(-5deg); 
+	-moz-transform: rotate(-5deg); 
+	transform: rotate(-5deg);
+}
+
+.pic2{
+	top: 0; 
+	left: 600px; 
+	-webkit-transform: rotate(-20deg); 
+	-moz-transform: rotate(-20deg); 
+	transform: rotate(-20deg);
+}
+
+.pic3
+{
+	bottom: 0; 
+	right: 0; 
+	-webkit-transform: rotate(5deg); 
+	-moz-transform: rotate(5deg); 
+	transform: rotate(5deg);
+}
+	
+.pic4
+{
+	bottom:0; 
+	left:300px; 
+	-webkit-transform: rotate(-10deg); 
+	-moz-transform: rotate(-10deg); 
+	transform: rotate(-10deg);
+}
+
+.pic5
+{
+	bottom: 0; 
+	left: 0; 
+	-webkit-transform: rotate(-10deg); 
+	-moz-transform: rotate(-10deg); 
+	transform: rotate(-10deg);
+}
+
+.pic6
+{
+	top: 0; 
+	left:0; 
+	-webkit-transform: rotate(10deg); 
+	-moz-transform: rotate(10deg); 
+	transform: rotate(10deg);
+}
+
+.pic7
+{
+	top: 0; 
+	left: 850px; 
+	-webkit-transform: rotate(20deg); 
+	-moz-transform: rotate(20deg); 
+	transform: rotate(20deg);
+}
+
+.pic8
+{
+	bottom: -20px; 
+	right: 630px; 
+	-webkit-transform: rotate(5deg); 
+	-moz-transform: rotate(5deg); 
+	transform: rotate(5deg);
+}
+
+.pic9
+{
+	top: 90px; 
+	left: 550px; 
+	-webkit-transform: rotate(15deg); 
+	-moz-transform: rotate(15deg); 
+	transform: rotate(15deg);
+}
+
+.pic10
+{
+	left:180px; 
+	top:20px; 
+	-webkit-transform: rotate(-10deg); 
+	-moz-transform: rotate(-10deg); 
+	transform: rotate(-10deg);
+}

@@ -1,0 +1,237 @@
+/* css Zen Garden submission 102 - 'Revolution!', by David Hellsing, http://www.monc.se/ */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+/* All associated graphics copyright 2004, David Hellsing */
+/* Added: May 3rd, 2004 */
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the 
+   designer's written permission. However, feel free to study the CSS and use 
+   techniques you learn from it elsewhere. */
+
+
+
+/* This design was made by David Hellsing for monc. */
+
+/*
+////////// GENERAL //////////
+*/
+
+body {
+	background: #e15 url(body_bg.gif) fixed;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+////////// TYPOGRAPHY //////////
+*/
+
+p,ul,ol,li,dt,dl,dd,h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0;}
+
+p { font: small/1.8em georgia, tahoma, verdana, tahoma, arial, helvetica, sans-serif; color: #333; }
+
+h1,h2,h3,h4,h5,h6 { font: 100% Arial Black, verdana, tahoma, sans-serif; }
+
+p { margin-bottom: 9px; }
+
+a {
+	color: #26a;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:active {
+	color: #000;
+	border-bottom: 1px dotted #000;
+}
+
+a:visited {
+	color: #048;
+}
+
+a:hover {
+	color: #c32;
+	border-bottom: 1px dotted #c32;
+}
+
+h3 {
+	height: 20px;
+	width: 240px;
+	margin: 20px 0 7px 0;
+}
+
+.preamble h3 { background: url(head_theroad.gif) no-repeat; }
+.explanation h3 { background: url(head_sowhat.gif) no-repeat;}
+.participation h3 { background: url(head_participation.gif) no-repeat;}
+.benefits h3 { background: url(head_benefits.gif) no-repeat;}
+.requirements h3 { background: url(head_requirements.gif) no-repeat;}
+
+p:nth-child(2),p:nth-child(3),p:nth-child(4),p:nth-child(5),p:nth-child(6) { padding: 0 30px 0 20px; }
+
+abbr {
+	font-style: normal;
+	font-size: 90%;
+	letter-spacing: 1px;
+	font-weight: bold;
+	border: none;
+}
+
+header h1 {
+	width: 100%;
+	height: 100%;
+	background: transparent url(top.jpg) no-repeat;
+}
+
+.summary p:last-child {
+	margin: 10px 30px 0 0;
+	padding: 0 0 8px 0;
+	text-transform: uppercase;
+	font: 9px/20px georgia, tahoma, verdana, arial, sans-serif;
+	border-bottom: 1px dotted #333;
+}
+
+.summary p:last-child letter-spacing { text-transform: uppercase; } /* IE5/win */
+
+footer a {
+	margin: 5px 20px 0 0;
+	padding: 2px 5px;
+	border-left: 1px solid #26a;
+	border-right: 1px solid #26a;
+	font: 9px/20px georgia, tahoma, verdana, arial, sans-serif;
+	text-transform: uppercase;
+}
+
+footer a:hover {
+	background: #26a;
+	color: #fff;
+}
+
+header h2, .summary p:first-child { display: none; }
+
+header h1, h3 {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/*
+////////// CONTAINERS //////////
+*/
+
+
+.page-wrapper {
+	margin: 0 6%;
+	background: #f4f2ea url(container_bg.jpg);
+	border-left: solid 8px #000;
+	border-right: solid 8px #000;
+	border-bottom: solid 32px #000;
+}
+
+header {
+	margin: 0;
+	background: #000 url(top_bg.jpg);
+	height: 462px;
+}
+
+footer {
+	margin: 20px 30px 50px 20px;
+	padding-top: 10px;
+	border-top: 1px dotted #000;
+}
+
+.summary { margin-left: 250px; }
+
+.preamble {
+	position: relative;
+	margin-left: 230px;
+	text-align: left;
+}
+
+.supporting {
+	position: relative;
+	margin-left: 230px;
+	text-align: left;
+}
+
+
+/*
+////////// LISTS //////////
+*/
+
+
+.sidebar {
+	position: absolute; 
+	top: 480px;
+	margin-left: 30px;
+	background: url(left_bg2.jpg) repeat-y top left;
+	width: 180px;
+	
+}
+
+.sidebar .wrapper { 
+	font: 9px/12px georgia, tahoma, verdana, arial, helvetica, sans-serif;
+	text-transform: uppercase;
+	color: #333;
+	border-bottom: 5px solid #000;
+	width: 170px;
+}
+
+.sidebar ul { list-style: none; }
+
+.sidebar li {
+	margin: 0 15px;
+	border-top: 1px dotted #333;
+	padding: 8px 0;
+	text-transform: uppercase;
+}
+
+.sidebar li a {
+	display: block;
+	color: #c32;
+	font: bold 11px/16px georgia, tahoma, verdana, arial, helvetica, sans-serif;
+	text-transform: none;
+}
+
+.sidebar li a:hover { 
+	color: #000;
+	border: none;
+}
+
+.sidebar li a.designer-name {
+	color: #333;
+	font-size: 9px;
+	font-weight: normal;
+	display: inline;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+.sidebar li a.designer-name:hover { color: #888; }
+	
+
+.design-archives li a, .zen-resources li a {
+	display: inline;
+	font-weight: normal;
+	font-size: 9px;
+	line-height: 15px;
+	padding: 0;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.design-selection h3, .design-archives h3, #lfavorites h3, .zen-resources h3 {
+	width: 170px;
+	height: 30px;
+	margin: 0 0 -1px 0;
+}
+
+.design-selection h3 { background: transparent url(left_lselect.gif) no-repeat; }
+
+.design-archives h3 { background: transparent url(left_larchives.gif) no-repeat; }
+
+#lfavorites h3 { background: transparent url(left_lfavorites.gif) no-repeat; }
+
+.zen-resources h3 { background: transparent url(left_lresources.gif) no-repeat; }
+
+
+/* END OF PAGE --> */

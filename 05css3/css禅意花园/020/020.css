@@ -1,0 +1,331 @@
+/* css Zen Garden submission 020 - 'Friendly Beaches' by Sophie G - www.sophie-g.net */
+/* css released under Creative Commons ShareAlike License v1.0 - http://creativecommons.org/licenses/sa/1.0/  */
+/* All associated graphics copyright 2003,  Sophie G */
+
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the designer's written permission. */
+/* The CSS itself may freely be used for anything you wish, but the associated graphics belong to the designer. */
+/* What you may use - .css files. What you may not use - .jpg, .gif, and .png files. */
+
+
+
+body {
+	background-color: #FFF;
+	margin: 0px;
+	padding: 10px;
+	font-family:  Georgia, "Times New Roman", Times, serif;
+	font-size: 90%;
+}
+
+p {
+	line-height: 180%;
+	}
+.page-wrapper {
+	background-color: #EDEEF0;
+	border: 1px solid #DAD5D9;
+	padding: 0px;
+	margin: 0px;
+}
+abbr {
+	border-bottom: 1px #6BA0D2 dashed;
+}
+header {
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	background-color: #A4ACB3;
+}
+header h1 {
+	height: 190px;
+	margin: 0px;
+	background-image: url(headerh1.jpg);
+	background-repeat: no-repeat;
+}
+header h1, header h2 {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+header h2 {
+	background-color: #EDEEF0;
+	margin: 0px;
+	height: 24px;
+	padding: 0px 14px 2px 14px;
+	background-image: url(headerh2.gif);
+	background-repeat: no-repeat;
+}
+header h2 abbr {
+	color: #FFF;
+	border-bottom: 1px #FFF dashed;
+}
+.summary p:first-child {
+	position: absolute;
+	right: 21px;
+	top: 21px;
+	width: 12em;
+	height: 165px;
+	padding: 3px 0 0 0;
+	margin: 0px;
+	border: 1px solid #0C2953;
+	text-align: center;
+	font-size: 90%;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	line-height: 110%;
+	color: #FFF;
+	background-image: url(summary.jpg);
+	background-repeat: no-repeat;
+	background-position: 50% 100%; 
+	background-color: #0C2953;	
+}
+.preamble {
+	padding: 0px 15em 0px 3em;
+}
+.preamble h3 {
+	margin: 15px 0px 0px 0px;
+	padding: 6px 20px 2px 6px;
+	text-align: left;
+	font-size: 180%;
+	font-variant: small-caps;
+	color: #6BA0D2;
+	background-image: url(bordDroitPreambleh3.gif);
+	background-repeat: no-repeat;
+	background-position: 100% 0px;
+	background-color: #F6F7F7;
+}
+.preamble h3::before {
+	content: " ";
+	display: inline-block;
+	padding: 35px 0px 30px 48px;
+	background-image: url(preambleShell.jpg);
+	background-repeat: no-repeat;
+	background-position: 0px 50%;
+	vertical-align: middle;
+}
+.preamble p {
+	text-align: justify;
+}
+.preamble p:nth-child(2), .preamble p:nth-child(3) {
+	margin: 0px;
+	padding: 10px 20px 2px 6px;
+	background-image: url(bordDroitPreamble.gif);
+	background-repeat: repeat-y;
+	background-position: 100% 0px;
+	background-color: #F6F7F7;
+}
+.preamble p:nth-child(4) {
+	margin: 0px;
+	padding: 0px;
+	background-image: url(bordBasPreamble.gif);
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+	background-color: #F6F7F7;
+	padding: 10px 20px 20px 6px;
+}
+.preamble p:nth-child(4)::after {
+	content: " ";
+	display: block;
+	margin: 0px;
+	padding: 0 20px 0 6px;
+	background-image: url(bordBasPreambleGauche.gif);
+	background-repeat: no-repeat;
+	background-position: 0% 100%;
+}
+.preamble p:first-letter {
+	color: #6BA0D2;
+	font-size: 140%;
+	font-weight: bold;
+	margin: 0px 2px 0px 0px;
+}
+.supporting {
+	margin: 0px;
+	padding: 10px 16em 0px 1em;
+	font-size: 90%;
+}
+.explanation, .participation, .benefits, .requirements {
+	border: 2px solid #FFF;
+	padding: 0px;
+}
+.explanation {
+	margin: 0px 0px 10px 0px;
+}
+.participation {
+	margin: 0px 0px 10px 0px;
+	float: left;
+	width: 30%;
+}
+.benefits {
+	margin: 0px 0px 10px 32%;
+}
+.requirements {
+	margin: 0px 0px 10px 32%;
+}
+.supporting h3 {
+	margin: 0px;
+	padding: 5px 30px 1px 2px;
+	text-align: left;
+	font-size: 120%;
+	font-variant: small-caps;
+	color: #6BA0D2;
+	border-bottom: 1px solid #6BA0D2;
+	background-color: #F6F7F7;
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+.explanation h3 {
+	background-image: url(explanationShell.jpg);
+}
+.participation h3 {
+	background-image: url(participationShell.jpg);
+}
+.benefits h3 {
+	background-image: url(benefitsShell.jpg);
+}
+.requirements h3 {
+	background-image: url(requirementsRock.jpg);
+}
+.supporting p {
+	text-align: justify;
+	margin: 10px 0px 0px 0px;
+	padding: 1px 3px 2px 3px;
+}
+.supporting p:first-letter {
+	font-weight: bold;
+}
+.supporting a:link {
+	color: #0083FF;
+	font-weight: bold;
+}
+.supporting a:visited {
+	color: #204160;
+	font-weight: bold;
+}
+.supporting a:hover, .supporting a:active {
+	color: #8C0000;
+	font-weight: bold;
+	text-decoration: none;
+}
+.sidebar, .summary p:last-child {
+	font-size: 90%;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	position: absolute;
+	right: 21px;
+	width: 12em;
+	border: 1px solid #0C2953;
+	padding: 0px;
+	margin: 0px;
+	background-color: #A4ACB3;
+}
+.summary p:last-child {
+	height: 50px;
+	text-align: center;
+	top: 217px;
+	font-size: 90%;
+	display: block;
+	padding: 3px 0;
+	color: #FFF;
+}
+.sidebar {
+	top: 266px;
+}
+.sidebar h3 {
+	background-color: #0C2953;
+	color: #FFF;
+	margin: 0px;
+	padding: 30px 1px 1px 1px;
+	background-repeat: no-repeat;
+}
+.sidebar h3.select {
+	background-image: url(selecth3.jpg);
+	background-position: 50% 0%;
+}
+.sidebar h3.favorites {
+	border-top: 1px solid #0C2953;
+	background-image: url(favoritesh3.jpg);
+	background-position: 40% 100%;
+}
+.sidebar h3.archives {
+	border-top: 1px solid #0C2953;
+	background-image: url(archivesh3.jpg);
+	background-position: 40% 100%;
+}
+.sidebar h3.resources {
+	border-top: 1px solid #0C2953;
+	background-image: url(resourcesh3.jpg);
+	background-position: 50% 30%;
+}
+.sidebar h3:first-letter {
+	color: #FFF;
+	font-size: 160%;
+}
+.sidebar ul {
+	list-style-type: none;
+	font-size: 90%;
+	color: #FFF;
+	margin: 0px;
+	padding: 0px;
+	background-color: #A4ACB3;
+}
+.sidebar li {
+	padding: 3px 2px 3px 2px;
+	margin-bottom: 4px;
+}
+.sidebar li:hover {
+	padding: 2px 1px 2px 1px;
+	border: 1px dotted #0C2953;
+	background-color: #6BA0D2;
+}
+.summary p:last-child a:link {
+	color: #FFF;
+	font-weight: bold;
+}
+.summary p:last-child a:visited {
+	color: #204160;
+}
+.summary p:last-child a:hover, .summary p:last-child a:active {
+	color: #FFD800;
+	font-weight: bold;
+	text-decoration: none;
+}
+.sidebar a:link, .sidebar a:visited {
+	border-left: 6px solid #FFF;
+	padding-left: 2px;
+	font-weight: bold;
+	color: #FFF;
+}
+.sidebar a:visited {
+	color: #204160;
+}
+.sidebar a:hover, .sidebar a:active {
+	border-left: 6px solid #FFD800;
+	padding-left: 2px;
+	color: #FFD800;
+	text-decoration: none;
+	font-weight: bold;
+}
+.sidebar a.designer-name:link, .sidebar a.designer-name:visited {
+	border-left: none;
+	padding-left: 0px;
+	font-weight: normal;
+	color: #FFF;
+}
+.sidebar a.designer-name:hover, .sidebar a.designer-name:active {
+	border-left: none;
+	padding-left: 0px;
+	color: #FFD800;
+	text-decoration: none;
+}
+.sidebar abbr {
+	border-bottom: 1px #FFF dashed;
+}
+footer {
+	clear: both;
+	text-align: right;
+	margin: 0px -16em 0px 0px;
+	padding: 25px 0px 0px 0px;
+	background-repeat: no-repeat;
+	background-image: url(signSoph.gif);
+	background-position: 0% 95%;
+}
+footer a {
+	font-size: 70%;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+}

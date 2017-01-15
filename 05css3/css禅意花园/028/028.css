@@ -1,0 +1,262 @@
+/* css Zen Garden submission 028 - 'Atlantis' by Kevin Davis, http://alazanto.org/ */
+/* css released under Creative Commons ShareAlike License v1.0 - http://creativecommons.org/licenses/sa/1.0/  */
+/* All associated graphics copyright 2003, Kevin Davis */
+
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the designer's written permission. */
+/* The CSS itself may freely be used for anything you wish, but the associated graphics belong to the designer. */
+/* What you may use - .css files. What you may not use - .jpg, .gif, and .png files. */
+
+/* for more work by the author, see http://alazanto.org */
+/* have a great day! :) */
+
+/******************************************************************* primary elements */
+
+body { 
+	background-color: #000;
+	color: #ccc;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+p { 
+	font: 11pt/16pt georgia,palatino,times,serif; 
+	text-align: left;
+}
+
+/******************************************************************* primary hyperlink styling */
+		
+a:link { 
+	font-weight: normal; 
+	text-decoration: none;
+	background-color: transparent;
+	color: #bcf;
+}
+
+a:visited { 
+	font-weight: normal; 
+	text-decoration: none;
+	background-color: transparent;
+	color: #bde;
+}
+
+a:hover, a:active { 
+	text-decoration: underline;
+	background-color: transparent;
+	color: #fff;
+}
+
+/******************************************************************* body content */
+.page-wrapper { 
+	position: relative;
+	
+	margin-top: 0px;
+	margin-left: auto;
+	margin-bottom: 0px;
+	margin-right: auto;
+	padding: 1px; /* messy method of overcoming a rendering bug in mozilla 1.4, maybe others */
+
+	font: 8pt/12pt georgia,palatino,times,serif;
+	color: #ddd; 
+	background: #000 url(backdrop.title.jpg) no-repeat top left;
+	
+	width: 749px;
+	
+	voice-family: "\"}\""; 
+	voice-family:inherit;
+	
+	width: 750px;
+	
+	
+}
+
+header { 
+	display: none;
+}
+	header h1, header h2 { 
+		display: none;
+	}
+		
+.intro {
+	position: relative;
+	
+	margin-top: 225px;
+	margin-left: 218px;
+	margin-bottom: 10px;
+	margin-right: 39px;
+	
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 0px;
+	padding-right: 10px;
+	
+	border: 1px dashed #fff;
+}
+
+	.summary {
+		float: left;
+		clear:both;
+		
+		margin-top: 0px;
+		margin-left: 0px;
+		margin-bottom: 0px;
+		margin-right: 7px;
+		
+		width: 165px;
+		
+		voice-family: "\"}\""; 
+		voice-family:inherit;
+		
+		width: 175px;
+	}
+	
+	.summary p {
+		font: italic 10pt/22pt georgia,palatino,times,serif; 
+		text-align:center;
+		margin: 4px;
+		padding: 0px;
+	}
+	
+	.preamble {
+		clear: right; 
+		
+		padding-top: 0px;
+		padding-left: 0px;
+		padding-bottom: 0px;
+		padding-right: 0px;
+	}
+	
+	.intro h3 {
+		margin-top: 0px;
+		margin-left: 0px;
+		margin-bottom: 15px;
+		margin-right: 0px;
+		
+		padding-top: 1px;
+		padding-left: 0px;
+		padding-bottom: 3px;
+		padding-right: 0px;
+		
+		background-color: transparent;
+		font: 14pt georgia,palatino,times,serif;
+		font-weight: normal;
+		text-align: left;
+		
+		color: #fff;
+	}
+
+.supporting {
+	margin-top: 0px;
+	margin-left: 218px;
+	margin-bottom: 10px;
+	margin-right: 39px;
+	padding: 0px;
+}
+
+	.supporting h3 {
+		margin-top: 15px;
+		margin-left: 0px;
+		margin-bottom: 15px;
+		margin-right: 0px;
+		
+		padding-top: 1px;
+		padding-left: 0px;
+		padding-bottom: 3px;
+		padding-right: 0px;
+		
+		font: 14pt georgia,palatino,times,serif;
+		font-weight: normal;
+		text-align: left;
+		
+		background-color: transparent;
+		color: #fff;
+		border-top: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+	}
+
+footer { 
+	margin-top: 30px;
+	margin-left: 0px;
+	margin-bottom: 30px;
+	margin-right: 0px;
+	
+	text-align: center; 
+	
+	background-color: transparent;
+	color: #fff;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	
+}
+	footer a:link, footer a:visited { 
+		background-color: transparent;
+		margin-left: 10px;
+		margin-right: 10px; 
+	}
+	
+/******************************************************************* link list */
+
+.sidebar {
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	
+	top: 435px; 
+	left: 50px;
+	width: 150px;
+	
+	text-align: left;
+}
+
+	.sidebar h3.select { 
+		background: transparent url(linkhead-select.jpg) no-repeat top left; 
+		margin: 0px 0px 0px 0px; width: 150px; height: 21px;
+
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+		
+	.sidebar h3.archives { 
+		background: transparent url(linkhead-archives.jpg) no-repeat top left; 
+		margin: 10px 0px 0px 0px; width: 150px; height: 21px;
+
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+		
+	.sidebar h3.resources { 
+		background: transparent url(linkhead-resources.jpg) no-repeat top left; 
+		margin: 10px 0px 0px 0px; width: 150px; height: 21px;
+
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+		
+	.sidebar ul {
+		margin-top: 0px;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-right: 0px;
+		padding: 0px;
+	}
+		.sidebar li {
+			line-height: 2.5ex; 
+			list-style-type: none;
+			background: transparent url(cr1.gif) no-repeat top center; 
+			display: block; 
+			padding-top: 5px; 
+			margin-bottom: 5px;
+		}
+		
+		.design-selection li, #lfavorites li {
+			background: url(docbullet.gif) no-repeat 0px 7px;
+			padding-left: 11px;
+		}
+
+			.design-selection a, #lfavorites a { display:block; text-transform:lowercase; }
+			.design-selection a.designer-name, #lfavorites a.designer-name {display:inline; text-transform: none; }

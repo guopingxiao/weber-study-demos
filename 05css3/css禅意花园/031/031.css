@@ -1,0 +1,260 @@
+/* css Zen Garden submission 031 - 'Hedges' by Kev Mears,  http://www.mearso.com/ */
+/* css released under Creative Commons ShareAlike License v1.0 - http://creativecommons.org/licenses/sa/1.0/  */
+/* All associated graphics copyright 2003, Kev Mears */
+
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the designer's written permission. */
+/* The CSS itself may freely be used for anything you wish, but the associated graphics belong to the designer. */
+/* What you may use - .css files. What you may not use - .jpg, .gif, and .png files. */
+
+
+/* css released under Creative Commons ShareAlike License v1.0 - http://creativecommons.org/licenses/sa/1.0/  */
+
+/* structure
+--------------------------------- */
+
+body
+{
+	margin: 0;
+	padding: 0;
+	background: #FFF url("bg_tree.gif") repeat-x left top;
+	color: #888;
+	text-align: center;
+}
+
+
+
+.page-wrapper
+{
+	position: relative;
+	padding:0;
+	width: 732px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+
+/* hidden text
+--------------------------------- */
+
+h1, h3 {
+	margin: 0;
+	background-repeat: no-repeat;
+	background-position: left top;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+h2 {
+	display: none;
+}
+
+/* header and summary
+--------------------------------- */
+
+header h1
+{
+	height: 200px;
+	background: url("nutitle.gif") no-repeat;
+	padding:0;
+}
+
+.summary p:first-child
+{
+	position: absolute;
+	top: 12em;
+	right: 15px;
+	width: 120px;
+	margin: 75px 0 0 580px;
+	font-size: 80%;
+	text-align: right;
+}
+
+.summary p:last-child
+{
+	position: absolute;
+	top: 25em;
+	right: 15px;
+	width: 120px;
+	margin: 0;
+	font-size: 93%;
+	text-align: center;
+	padding-bottom: 90px;
+	background: url("barrow.gif") no-repeat bottom;
+	background-repeat: no-repeat;
+}
+
+.summary p:last-child a:link, .summary p:last-child a:visited
+{
+	white-space: nowrap;
+	font: bold 92%/1.3em Verdana,Arial,Sans-serif;
+	text-transform: uppercase;
+}
+
+/* preamble
+--------------------------------- */
+
+.preamble
+{
+	position: relative;
+	left: 195px;
+	padding-bottom: 0px;
+	width: 400px;
+
+}
+
+.preamble h3
+{
+	height: 70px;
+	background-image: url("road.gif");
+}
+
+.preamble p
+{
+	width: 350px;
+}
+
+/* supporting text
+--------------------------------- */
+
+.supporting
+{
+	position: relative;
+	left: 195px;
+	padding-bottom: 0px;
+	border-bottom: 2px solid #363;
+	width: 400px;
+}
+
+.supporting p
+{
+	line-height: 1.5em;
+}
+
+.supporting h3 { height: 70px; }
+
+.explanation h3
+{
+	background-image: url("what.gif");
+}
+
+.participation h3
+{
+	background-image: url("participation.gif");
+}
+
+.benefits h3
+{
+	background-image: url("benefits.gif");
+}
+
+.requirements h3
+{
+	background-image: url("requirements.gif");
+}
+
+/* link list
+--------------------------------- */
+
+.sidebar
+{
+	position: absolute;
+	top: 200px;
+	left: 0;
+	width: 190px;
+}
+
+.sidebar h3 { height: 41px; }
+
+.design-selection h3
+{
+	background-image: url("select.gif");
+}
+
+.design-archives h3
+{
+	background-image: url("archives.gif");
+}
+
+.zen-resources h3
+{
+	background-image: url("resources.gif");
+}
+
+.sidebar ul
+{
+	margin: 1em 0 1em;
+	padding: 0;
+	font-size: 90%;
+	list-style: none;
+	text-align: left;
+}
+
+.design-archives li, .zen-resources li { text-transform: lowercase; }
+
+.sidebar ul li
+{
+	margin: 0 0 .5em;
+
+	line-height: 1em;
+}
+
+.sidebar li a:link, .sidebar li a:visited
+{
+	font-family: Verdana,Arial,Sans-serif;
+	font-size: 90%;
+}
+
+.sidebar .design-selection a:link, .sidebar .design-selection a:visited { display: block; }
+
+.sidebar .design-selection a.designer-name:link, .sidebar .design-selection a.designer-name:visited
+{
+	display: inline;
+	font-family: Georgia,Serif;
+	font-weight: normal;
+	background-color: transparent;
+	text-transform: lowercase;
+}
+
+/* footer
+--------------------------------- */
+
+footer
+{
+	background: #D9D98B;
+	color: #fff;
+	padding: 10px 20px;
+	border-top: 1px solid #363;
+	font: 85% Verdana,Arial,Sans-serif;
+	text-align: center;
+}
+
+footer a:link, footer a:visited
+{
+	padding: 0 5px;
+	font-weight: normal;
+}
+
+/* links
+--------------------------------- */
+
+a:link, a:visited
+{
+	color: #090;
+	background-color: transparent;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #663;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+/* misc
+--------------------------------- */
+
+abbr { border-width: 0; }

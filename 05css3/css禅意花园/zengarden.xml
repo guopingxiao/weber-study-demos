@@ -1,0 +1,66 @@
+<?xml  version="1.0"?>
+
+<rss version="2.0">
+
+<channel>
+
+<title>css Zen Garden</title>
+
+<description>A demonstration of what can be accomplished visually through CSS-based design. This feed announces new entries.</description>
+<link>http://www.csszengarden.com/</link>
+<language>en-ca</language>
+<webMaster>dave@example.com</webMaster>
+
+<lastBuildDate>Tues, 12 Dec 2013 08:00:00 PST</lastBuildDate>
+
+<item>
+  <title>#221 - 23 Jun 2014</title>
+  <description>'Mid Century Modern' by Andrew Lohman</description>
+  <link>http://www.csszengarden.com/221/</link>
+</item>
+
+<item>
+  <title>#220 - 12 Dec 2013</title>
+  <description>'Garments' by Dan Mall</description>
+  <link>http://www.csszengarden.com/220/</link>
+</item>
+
+<item>
+  <title>#219 - 5 Dec 2013</title>
+  <description>'Steel' by Steffen Knoeller</description>
+  <link>http://www.csszengarden.com/219/</link>
+</item>
+
+<item>
+  <title>#218 - 26 Nov 2013</title>
+  <description>'Apothecary' by Trent Walton</description>
+  <link>http://www.csszengarden.com/?cssfile=218/218.css</link>
+</item>
+
+<item>
+  <title>#217 - 19 Nov 2013</title>
+  <description>'Screen Filler' by Elliot Jay Stocks</description>
+  <link>http://www.csszengarden.com/?cssfile=217/217.css</link>
+</item>
+
+<item>
+  <title>#216 - 17 Sept 2013</title>
+  <description>'Fountain Kiss' by Jeremy Carlson</description>
+  <link>http://www.csszengarden.com/?cssfile=216/216.css</link>
+</item>
+
+<item>
+  <title>#215 - 18 Jul 2013</title>
+  <description>'A Robot Named Jimmy' by meltmedia</description>
+  <link>http://www.csszengarden.com/?cssfile=215/215.css</link>
+</item>
+
+<item>
+  <title>#214 - 17 Jul 2013</title>
+  <description>'Verde Moderna' by Dave Shea</description>
+  <link>http://www.csszengarden.com/?cssfile=214/214.css</link>
+</item>
+
+
+</channel>
+</rss> 

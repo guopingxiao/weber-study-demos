@@ -1,0 +1,382 @@
+/* css Zen Garden submission 150 - 'By The Pier', by Peter Ong, http://peter.rock.per.sg/ */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+/* All associated graphics copyright 2005, Peter Ong */
+/* Added: Jan. 31st, 2005 */
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the 
+   designer's written permission. However, feel free to study the CSS and use 
+   techniques you learn from it elsewhere. */
+
+
+
+/* basic elements */
+
+body
+{
+	color: #fc3;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 17px;
+	background-color: #000;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+a:link
+{
+	color: #cf6;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:visited
+{
+	color: #007f00;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover, a:active
+{
+	color: #f60;
+	text-decoration: none;
+	border-bottom: 1px dotted #005e00;
+}
+
+
+
+/* specific divs */
+.page-wrapper
+{
+	background-color: #0c3379;
+	text-align: left;
+	margin: 8px auto;
+	padding: 0;
+	width: 640px;
+}
+
+abbr
+{
+	color: #ffff67;
+	font-style: italic;
+	font-weight: bold;
+	text-decoration: none;
+	border-width: 0;
+}
+
+.intro
+{
+	background-image: url("masthead.jpg");
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin: 0;
+	padding: 0;
+	width: 640px;
+	height: 445px;
+}
+
+header
+{
+	display: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+h1, h2 {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.summary
+{
+	width: 300px;
+	margin: 0 0 0;
+	padding: 154px 0 0;
+	position: absolute;
+}
+
+.summary p:first-child {
+	display: none;
+}
+
+.summary p:last-child
+{
+	color: #699fc8;
+	font-size: 10px;
+	text-align: left;
+	margin: 0;
+	padding: 0 0 0 12px;
+	position: absolute;
+	top: 150px;
+	float: left;
+}
+
+.preamble
+{
+	margin: 0;
+	padding: 233px 0 10px 0;
+	width: 375px;
+	float: right;
+}
+
+.supporting { clear: right; }
+
+.explanation, .participation, .benefits, .requirements
+{
+	background-color: #0c3379;
+	padding-bottom: 10px;
+	width: 375px;
+	float: right;
+	clear: both;
+}
+
+.preamble h3
+{
+	background-image: url("enlightenment.gif");
+	background-repeat: no-repeat;
+	background-position: right 0;
+	margin: 199px 0 8px;
+	padding: 0;
+	width: 375px;
+	height: 35px;
+	float: right;
+}
+
+.participation h3
+{
+	background-image: url("participation.gif");
+	background-repeat: no-repeat;
+	background-position: right 0;
+	margin: 8px 0;
+	padding: 0;
+	width: 375px;
+	height: 35px;
+	float: right;
+}
+
+.requirements h3
+{
+	background-image: url("requirements.gif");
+	background-repeat: no-repeat;
+	background-position: right 0;
+	margin: 8px 0;
+	padding: 0;
+	width: 375px;
+	height: 35px;
+	float: right;
+}
+
+.benefits h3
+{
+	background-image: url("benefits.gif");
+	background-repeat: no-repeat;
+	background-position: right 0;
+	margin: 8px 0;
+	padding: 0;
+	width: 375px;
+	height: 35px;
+	float: right;
+}
+
+.explanation h3
+{
+	background-image: url("whatabout.gif");
+	background-repeat: no-repeat;
+	background-position: right 0;
+	margin: 8px 0;
+	padding: 0;
+	width: 375px;
+	height: 35px;
+	float: right;
+}
+
+p:nth-child(2), p:nth-child(3), p:nth-child(4), p:nth-child(5), p:nth-child(6)
+{
+	text-align: left;
+	margin: 0;
+	padding: 0 0 8px 15px;
+	width: 320px;
+	float: left;
+}
+
+.preamble h3, .participation h3, .explanation h3, .benefits h3, .requirements h3
+{
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+footer
+{
+	background-image: url("base.jpg");
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 100px;
+	padding-bottom: 20px;
+	width: 640px;
+	clear: both;
+}
+
+footer a:link, footer a:visited
+{
+	font-weight: bold;
+	margin-top: 0;
+	padding-bottom: 50px;
+}
+
+.sidebar
+{
+	background-color: #0c3379;
+	position: absolute;
+	top: 440px;
+	width: 210px;
+}
+
+.design-selection
+{
+	margin: 0;
+	padding: 0 0 0 0;
+}
+
+.design-selection h3
+{
+	margin: 0 0 0 40px;
+	padding: 0;
+}
+
+.sidebar ul li
+{
+	font-size: 10px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 5px;
+}
+
+.sidebar ul
+{
+	text-align: right;
+	list-style-type: none;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 18px;
+	padding: 0;
+}
+
+.sidebar h3.select
+{
+	background-image: url("select.gif");
+	background-repeat: no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 8px;
+	width: 210px;
+	height: 35px;
+
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+.sidebar h3.archives
+{
+	background-image: url("archives.gif");
+	background-repeat: no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 8px;
+	width: 210px;
+	height: 35px;
+
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.sidebar h3.resources
+{
+	background-image: url("resources.gif");
+	background-repeat: no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 8px;
+	width: 210px;
+	height: 35px;
+
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.sidebar .design-selection li a:link
+{
+
+	font-size: 10px;
+	color: #cf6;
+	text-decoration: none;
+	text-transform: uppercase;
+	display: block;
+	padding: 2px 4px;
+}
+
+.sidebar .design-selection li a:hover
+{
+
+	font-size: 10px;
+	color: #f60;
+	text-decoration: none;
+	display: block;
+	padding: 2px 4px;
+	border-width: 0;
+}
+
+.sidebar  .design-selectionli a:visited
+{
+
+	font-size: 10px;
+	color: #5bbb11;
+	text-decoration: none;
+	display: block;
+	padding: 2px 4px;
+}
+
+.sidebar .design-selection ul li a.designer-name
+{
+
+	font-size: 10px;
+	color: #fff;
+	font-style: italic;
+	text-decoration: none;
+	text-transform: none;
+	display: inline;
+	padding: 2px 4px;
+}
+
+.sidebar li a:link
+{
+	color: #cf6;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 2px 4px;
+}
+
+.sidebar li a:hover
+{
+	color: #f60;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 2px 4px;
+	border-width: 0;
+}
+
+.sidebar li a:visited
+{
+	color: #5bbb11;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 2px 4px;
+}

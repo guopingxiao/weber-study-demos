@@ -1,0 +1,153 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+
+body{
+	background: #333;
+}
+
+.box{
+	margin: 50px auto;
+	width: 800px;
+	height: 300px;
+	position: relative;
+}
+
+.box .button-group{
+	width: 220px;
+	height: 220px;
+	margin:0 20px;
+	display: inline-block;
+}
+
+.box .icon{
+	display: block;
+	height:  200px;
+	width: 100%;
+	-webkit-transition:transform ease-out 0.3s;
+	transition: transform ease-out 0.3s;
+}
+
+.mission-link .icon{
+	background:  url(../images/mission.png) no-repeat center center;
+}
+
+.play-link .icon{
+	background:  url(../images/play.png) no-repeat center center;
+}
+
+.touch-link .icon{
+	background:  url(../images/touch.png) no-repeat center center;
+}
+
+.button-group .icon:hover{
+	transform: rotate(360deg)  scale(1.2);
+}
+
+.button-group .bnt{
+	display: block;
+	box-sizing: border-box;
+	width: 180px;
+	height: 50px;
+	text-decoration: none;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 18px;
+	color: #2DCB70;
+	border:2px solid rgba(255, 255, 255, 0.6);
+	margin: 0 auto;
+	padding-left: 20px;
+	line-height: 50px;/* 设置让按钮里的文字垂直居中，line-height = height*/
+	background: url(../images/allow.png) no-repeat 115px center;/* 距离左边120px后居中*/
+	-webkit-transition: ease 0.3s;/*transition动画一定要加在元素初试状态下，不要加在hover上*/
+	transition: ease 0.3s;
+	position: relative;/*为了下次边框的绝对定位*/
+}
+
+.button-group .bnt:hover{
+	border:2px solid rgba(255, 255, 255, 1);
+	background-position: 135px;
+}
+
+.bnt .line{
+	position:absolute;
+	display: block;
+	background: #FFFFFF;
+	-webkit-transition: ease 0.4s;/*transition动画一定要加在元素初试状态下，不要加在hover上*/
+	transition: ease 0.4s;
+}
+
+.bnt .line-top{
+	height: 2px;
+	width: 0px;
+	top: -2px;
+	left:-50%;
+}
+.bnt:hover .line-top{
+	width: 100%;
+	left:-2px;
+}
+
+.bnt .line-bottom{
+	height: 2px;
+	width: 0px;
+	top: 100%;
+	right:-50%;
+}
+.bnt:hover .line-bottom{
+	width: 100%;
+	right:-2px;
+}
+
+.bnt .line-left{
+	height: 0px;
+	width: 2px;
+	bottom:-80%;
+	left:-2px;
+}
+.bnt:hover .line-left{
+	height: 100%;
+	bottom: 0px;
+}
+
+.bnt .line-right{
+	height: 0px;
+	width: 2px;
+	top:-80%;
+	right:-2px;
+}
+.bnt:hover .line-right{
+	height: 100%;
+	top: 0px;
+}
+
+.box .tips{
+	position: absolute;
+	background: #2DCB70;
+	color: #FFF;
+	height: 35px;
+	line-height: 35px;
+	top: 100px;
+	border-radius: 3px;
+	margin: 0px auto;
+	padding: 0 10px;
+	text-align: center;
+	opacity: 0;
+}
+
+.tips em{
+	font-style: normal;
+}
+
+.tips .triggle{
+	position: absolute;
+	height: 0px;
+	width: 0px;
+	border: 8px solid transparent;
+	border-top-color: #2DCB70; 
+	bottom: -15px;
+	left: 50%;
+	margin-left: -4px;
+
+}

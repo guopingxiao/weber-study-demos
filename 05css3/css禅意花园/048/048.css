@@ -1,0 +1,232 @@
+/* css Zen Garden submission 048 - 'HoriZental' by Clément 'fastclemmy' Hardouin, http://www.fastclemmy.com/ */
+/* css released under Creative Commons ShareAlike License v1.0 - http://creativecommons.org/licenses/sa/1.0/  */
+/* All associated graphics copyright 2003,  Clément Hardouin */
+/* Added: October 18th, 2003 */
+
+
+/* IMPORTANT */
+/* This design is not a template. You may not reproduce it elsewhere without the designer's written permission. */
+/* The CSS itself may freely be used for anything you wish, but the associated graphics belong to the designer. */
+/* What you may use - .css files. What you may not use - .jpg, .gif, and .png files. */
+
+
+body {
+background-image:url("fond_body.gif");
+background-repeat:repeat-x;
+background-position:top left;
+background-color:#fff;
+color:#666;
+font-family:Trebuchet MS,Verdana,Arial,Helvetica,sans-serif;
+margin:0;
+padding:0;
+height:550px;
+width:4000px;
+}
+
+html > body {
+border-bottom:1px solid black;
+}
+
+h1, h2, h3, h4 {
+margin:0;
+padding:0;
+}
+
+.intro {
+background-image:url("header.jpg");
+background-repeat:no-repeat;
+background-position:left top;
+height:550px;
+}
+
+.intro p {
+width:350px;
+}
+
+h1, .extra1, .extra2, .extra3, .extra4, .extra5, .extra6 {
+	display: none;
+}
+
+.explanation h3, .preamble h3, .participation h3, .benefits h3, .requirements h3 {
+display:block;
+font-family:Century Gothic, AvantGarde, Verdana, Arial, sans-serif;
+font-weight:normal;
+font-size:1.5em;
+color:#c9380b;
+}
+
+h2 {
+color:#ccc;
+padding-top:325px;
+font-size:0.8em;
+font-weight:normal;
+letter-spacing:0.4em;
+padding-left:3em;
+}
+
+.summary {
+margin-left:0.8em;
+}
+
+.summary a, footer a, p a {
+color:#c9380b;
+text-decoration:none;
+font-weight:bold;
+}
+
+.summary a:hover, p a:hover, footer a:hover {
+text-decoration:underline;
+}
+
+.sidebar, .zen-resources {
+background-image:url("fond_bande_milieu.gif");
+background-repeat:repeat-y;
+width:255px;
+height:550px;
+position:absolute;
+top:0px;
+left:375px;
+}
+
+.sidebar h3 {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.zen-resources {
+background-image:url("fond_bande_droite.gif");
+width:298px;
+left:3200px;
+}
+
+h3.select {
+background-image:url("selectadesign.gif");
+background-repeat:no-repeat;
+width:255px;
+height:145px;
+}
+
+h3.resources {
+background-image:url("browseresources.gif");
+background-repeat:no-repeat;
+width:298px;
+height:138px;
+}
+
+.design-selection ul, .design-archives ul, .zen-resources ul {
+color:#000;
+font-size:0.9em;
+margin:0px;
+padding:0px;
+width:90%;
+padding-left:35px;
+}
+
+.zen-resources ul {
+padding-left:50px;
+}
+
+.design-selection li, .design-archives li, .zen-resources li {
+background-image: url("puce_blanche.gif");
+background-repeat: no-repeat;
+background-position: left center;
+list-style-type: none;
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 15px;
+width: 90%;
+font-size:0.8em;
+}
+
+.design-selection a, .design-archives a, .zen-resources a {
+color:#666;
+text-decoration:none;
+font-weight:bold;
+}
+
+.design-selection a.designer-name {
+color:#fff;
+font-weight:normal;
+}
+
+.design-selection a:hover, .design-archives a:hover, .zen-resources a:hover {
+text-decoration:underline;
+}
+
+h3.archives {
+margin-top:70px;
+background-image:url("viewarchives.gif");
+background-repeat:no-repeat;
+width:255px;
+height:100px;
+}
+
+.preamble, .explanation, .participation, .benefits, .requirements {
+position:absolute;
+background-repeat:no-repeat;
+top:0px;
+font-size:75%;
+height:550px;
+}
+
+.preamble {
+left:628px;
+background-image:url("theroad.jpg");
+width:379px;
+}
+
+.preamble h3, .requirements h3, .participation h3 {
+padding-top:280px;
+}
+
+.preamble p, .requirements p, .participation p, .explanation p, .benefits p, .preamble h3, .requirements h3, .participation h3, .explanation h3, .benefits h3, .requirements p, .requirements h3 {
+padding-left:8px;
+padding-right:8px;
+text-align:justify;
+}
+
+.explanation {
+left:1007px;
+background-image:url("sowhat.jpg");
+width:398px;
+}
+
+.explanation h3, .benefits h3 {
+padding-top:15px;
+}
+
+.participation {
+left:1405px;
+background-image:url("participation.jpg");
+width:656px;
+}
+
+.benefits {
+left:2061px;
+background-image:url("benefits.jpg");
+width:390px;
+}
+
+.requirements {
+left:2451px;
+width:1050px;
+}
+
+footer {
+position:absolute;
+top:470px;
+left:0.8em;
+}
+
+footer a:before {
+content: url("puce_rouge.gif");
+}
+
+p {
+font-size:0.9em;
+}
+
+.requirements p:nth-child(6) {
+margin-top:15px;
+color:#ccc;
+}
