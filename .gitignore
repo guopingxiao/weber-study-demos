@@ -1,6 +1,7 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+.vscode
 
 # Folder config file
 Desktop.ini
@@ -27,6 +28,7 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
+.vscode
 
 # Thumbnails
 ._*
@@ -46,3 +48,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 node_modules
+.vscode
