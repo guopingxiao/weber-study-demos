@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>react 入门示例</title>
+	<style type="text/css">
+		
+		ul{width:250px;
+			border:1px solid #000;
+			margin:100px;
+			padding:10px auto;}
+			ul li{
+				font-size: 14px;
+				color:#666;
+				line-height:30px;
+			}
+		
+	</style>
+</head>
+<script src ="build/react.js" type="text/javascript"></script>
+<script src ="build/react-dom.js" type="text/javascript"></script>
+<script src ="build/browser.min.js" type="text/javascript"></script>
+<body>
+	<div id="app">
+		
+	</div>
+	<div id="app2">
+		
+	</div>
+	<script type="text/babel">
+		var List = React.createClass({
+			createLis: function(){
+				var arrData = ["轻轻松松赚大钱的六种工作", "最后一种人人都想做", "这位中纪委内鬼是官二代", "曾参与查办万庆良", "5200万年前的两颗西红柿被找到:外形神奇", "探秘监狱中不为人知的故事", "第2个就不敢看下去", "快递存放10年无人签收:拆开后众人震惊"];
+				return arrData.map(function(value, index){
+					return (<li key= {index}>{value}</li>);
+				})
+			},
+			render:function(){
+				return (
+					<ul>
+						{/*通过创建一个方法来渲染一个列表，一个一个li的渲染太麻烦*/}
+						{this.createLis()}
+					</ul>
+				)
+			}
+		});
+
+		ReactDOM.render(<List />, document.getElementById('app'));
+			
+	</script>
+</body>
+</html>

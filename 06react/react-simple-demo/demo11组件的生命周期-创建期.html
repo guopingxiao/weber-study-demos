@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>react 入门示例</title>
+	<style type="text/css">		
+		.go-top{
+			position:fixed;
+			right:20px;
+			bottom:50px;
+			height:40px;
+			width:40px;
+			padding:5px;
+			background:rgba(0,0,0,0.5);
+			color:white;
+			text-align:center;
+		}
+		body{
+			height:2000px;
+		}
+	</style>
+</head>
+<script src ="build/react.js" type="text/javascript"></script>
+<script src ="build/react-dom.js" type="text/javascript"></script>
+<script src ="build/browser.min.js" type="text/javascript"></script>
+<body>
+	<div id="app">
+		
+	</div>
+
+	<script type="text/babel">
+		var GoTop = React.createClass({
+			//第一阶段，获取默认的属性
+			getDefaultProps() {
+				console.log('1 getDefaultProps', this, arguments);
+				return{
+					title:'默认标题'
+				}
+			},
+			//2.第二阶段，获取默认状态
+			getInitialState() {
+				console.log('2 getInitialState', this, arguments);
+				return{
+					title:this.props.title
+				}
+			},
+			//2.第三阶段，组件要被构建
+			componentWillMount() {
+				console.log('3 componentWillMount', this, arguments);
+			},
+			//第四阶段，组件渲染输出虚拟dom
+			render() {
+				console.log('4 render', this, arguments);
+				return(
+						<div className="go-top" onClick={this.backTop}>{this.state.title}</div>
+					)
+			},
+			//第五个阶段，组件创建完毕
+			componentDidMount() {
+					console.log('5 componentDidMount', this, arguments);
+					ReactDOM.findDOMNode(this).style.color='red';
+					//组件构建完成
+					
+					console.log(ReactDOM.findDOMNode(this),111);
+				},
+			backTop(){
+				window.scrollTo(0,0);
+				this.setState({
+					title:'返回顶部'
+				});
+			}	
+		})
+
+		ReactDOM.render(<GoTop />, document.getElementById('app'));
+			
+	</script>
+</body>
+</html>
