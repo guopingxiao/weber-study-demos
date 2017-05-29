@@ -1,5 +1,7 @@
 ### react、react-redux实例，todoList
 
+知识点：高阶函数，函数式编程，redux源码；
+
 * 与原作者的目录有点不一样，index.html放在static目录下，而且是可见的
 
 		$ git clone https://github.com/xxxgitone/react-redux-todos.git
@@ -32,3 +34,7 @@
   [8]: http://www.jianshu.com/p/42e11515c10f#
   
   http://www.cnblogs.com/MuYunyun/p/6241924.html#_label2
+  
+  https://github.com/kenberkeley/redux-simple-tutorial
+  
+  

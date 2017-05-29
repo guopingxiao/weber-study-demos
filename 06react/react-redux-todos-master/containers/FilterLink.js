@@ -1,26 +1,27 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Link from "../components/Link";
-import { setVisibility } from '../actions';
+import {connect} from 'react-redux';
+import {setVisibility} from '../actions/index';
+import Link from '../components/Link';
 
-//第二个参数表示组件自身的props
+
+// ownProps 是FilterLink的自定义属性
 const mapStateToProps = (state, ownProps) => {
-	return {
-		active: ownProps.filter === state.visibilityFilter
+	return{
+		active: state.visibilityFilter === ownProps.filter
 	}
 }
 
-const mapDispatchProps = (dispatch, ownProps) => {
-	return {
-		onClick: ()=>{
-			dispatch(setVisibility(ownProps.filter))
+const mapDispatchToProps  = (dispatch, ownProps) => {
+	return{
+		onLinkClick: () => {
+			dispatch(setVisibility(ownProps.filter));
 		}
 	}
 }
 
 const FilterLink = connect(
 	mapStateToProps,
-	mapDispatchProps
+	mapDispatchToProps
 )(Link);
 
 export default FilterLink;

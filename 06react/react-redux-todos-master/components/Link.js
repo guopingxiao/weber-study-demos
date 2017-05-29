@@ -1,18 +1,19 @@
-import React from 'react';
-const Link = ({active,children, onClick}) => {
-	if(active){
+import  React from 'react';
+
+// children 是指FootLink的children
+const Link = ({active, children, onLinkClick}) => {
+	if (active){
 		return <span>{children}</span>
 	}
-	return (
-	    <a href="#"
-	       onClick={e => {
-	         e.preventDefault()
-	         onClick()
-	       }}
-	    >
-	      {children}
-	    </a>
-  	)
-}
+	return (<a
+			href="#"
+			onClick={e=>{
+				e.preventDefault();
+				onLinkClick();
+			}}
+		>
+			{children}
+		</a>)
+};
 
 export default Link;
