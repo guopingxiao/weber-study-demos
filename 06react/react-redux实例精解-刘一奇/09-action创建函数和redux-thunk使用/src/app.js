@@ -1,12 +1,19 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
+/* action创建函数就是创建action对象，但是通过与其他中间件的结合，可以返回更多的数据类型，
+*  redux-thunk 就是返回一个函数，接受store的dispatch和getState作为参数；
+* */
 function increment() {
   return { type: 'INCREMENT' };
 }
 function decrement() {
   return { type: 'DECREMENT' };
 }
+
+// 增强的action创建函数，配合中间件，是的React只负责渲染界面和发送action,
+// 其他的逻辑都可以交给redux.这react与redux的最佳实践。
+
 function incrementIfOdd() {
   return (dispatch, getState) => {
     const value = getState();
@@ -36,7 +43,7 @@ function counter(state = 0, action) {
   }
 }
 
-
+// 安装，引入并使用。
 const store = createStore(counter, applyMiddleware(thunk));
 
 let currentValue = store.getState();

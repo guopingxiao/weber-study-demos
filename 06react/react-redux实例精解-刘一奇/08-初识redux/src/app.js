@@ -1,5 +1,7 @@
 import { createStore } from 'redux';
 
+// 这里其实是个reducer,在reducer中唯一要注意的就是不要改变state的值，而要
+//返回新的state（Object.assign）,在纯函数中只不执行有副作用的操作，调用API,路由等操作。
 function counter(state = 0, action) {
   switch (action.type) {
     case 'INCREMENT':
@@ -28,7 +30,12 @@ function counter(state = 0, action) {
 //   }
 // }
 
-
+/*
+* store的作用：负责更新，查询，订阅state多个状态，维持应用的state,由createStore(reducer创建)
+* 1.store.getState()获得state;
+* 2.store.subscribe()注册监听器
+* 3.store.dispatch(action)方法更新state
+* */
 const store = createStore(counter);
 
 let currentValue = store.getState();
@@ -41,7 +48,8 @@ const listener = () => {
 
 store.subscribe(listener);
 
-
+/* action是数据的唯一来源，发起action后，action传2进store，
+store通过reducer更新state，改变state的唯一途径是dispatch一个action*/
 store.dispatch({ type: 'INCREMENT' });
 
 store.dispatch({ type: 'INCREMENT' });
