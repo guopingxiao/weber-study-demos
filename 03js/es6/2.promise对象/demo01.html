@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.先看看Promise是个什么东西
+        console.dir(Promise);
+
+
+        //2. 接受两个一个回调，回调表示完成和拒绝的回调，这里是2s后执行完成，输出执行完成，
+        // 调用resolve()函数，这里还未实现
+        var p = new Promise(function (resolve, reject) {
+            //做一些异步操作
+            setTimeout(function () {
+                console.log('执行完成');
+                resolve('随便什么数据');
+            }, 2000);
+        });
+
+
+        //3. 一般用法,用一个函数封装一下，返回Promise原型对象
+        function runAsync() {
+            var p = new Promise(function (resolve, reject) {
+                //做一些异步操作
+                setTimeout(function () {
+                    console.log('执行完成');
+                    resolve('随便什么数据');
+                }, 2000);
+            });
+            return p;
+        }
+        runAsync();
+
+
+        //4使用语法。then({},{})第一个对应resolve的回调，第二个对应reject的回调
+
+        function getNumber() {
+            var p = new Promise(function (resolve, reject) {
+                //做一些异步操作 
+                setTimeout(function () {
+                    var num = Math.ceil(Math.random() * 10); //生成1-10的随机数
+                    if (num <= 5) {
+                        resolve(num);
+                    } else {
+                        reject('数字太大了');
+                    }
+                }, 2000);
+            });
+            return p;
+        }
+
+        getNumber()
+            .then(
+            function (data) {
+                console.log('resolved');
+                console.log(data);
+            },
+            function (reason, data) {
+                console.log('rejected');
+                console.log(reason);
+            }
+            );
+
+            //也可以是catch来捕获异常，还有很多，race,all
+        getNumber()
+            .then(function (data) {
+                console.log('resolved');
+                console.log(data);
+            })
+            .catch(function (reason) {
+                console.log('rejected');
+                console.log(reason);
+            });
+    </script>
+
+
+</body>
+
+</html>
