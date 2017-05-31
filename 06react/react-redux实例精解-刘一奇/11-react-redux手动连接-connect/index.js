@@ -13,6 +13,8 @@ import Connect5 from './containers/Connect5';
 const store = createStore(counter, applyMiddleware(thunk));
 const rootEl = document.getElementById('root');
 
+// 1.在所有组件的顶层使用Provider为整个应用提供store.
+// 2. 在container中使用connect()将state和action创建函数绑定到组件上。见containers
 ReactDOM.render(
   <Provider store={store}>
     <div>

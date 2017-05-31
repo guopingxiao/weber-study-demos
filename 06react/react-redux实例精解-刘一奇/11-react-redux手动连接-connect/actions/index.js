@@ -16,6 +16,7 @@ export function decrement() {
 
 export function incrementIfOdd() {
   return (dispatch, getState) => {
+    //对state进行解构 state.counter ===> counter
     const { counter } = getState();
 
     if (counter % 2 === 0) {
