@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import * as ActionCreators from '../actions';
 
 // 装饰器应该写在类声明上面
+/*
+ * 装饰器写法只是和上面写法语法上的区别，这样的话就不能使用无状态函数来编写组件，因为装饰器需要
+ * 添加在类声明上，同时也要用static propTypes这种静态属性来声明props.
+ * */
 @connect(
   state => ({ counter: state.counter }),
   ActionCreators
@@ -29,7 +33,7 @@ class Counter extends Component { // eslint-disable-line
         {' '}
         <button onClick={incrementIfOdd}>Increment if odd</button>
         {' '}
-        {/* 这里必须写成箭头函数，否则incrementAsync中的delay参数将会是SyntheticEvent的实例*/}
+        {/* 这里必须写成箭头函数，因为有setTimeout()函数的存在，否则incrementAsync中的delay参数将会是SyntheticEvent的实例*/}
         <button onClick={() => incrementAsync()}>Increment async</button>
       </p>
     );
