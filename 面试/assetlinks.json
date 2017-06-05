@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.dianping.v1",
+            "sha256_cert_fingerprints": [
+                "9D:E7:0C:32:59:94:8B:32:4D:84:39:7A:0A:B9:A7:32:AF:B4:54:6A:7C:BF:9B:37:5D:7A:07:4F:55:26:5B:D2"
+            ]
+        }
+    }
+]

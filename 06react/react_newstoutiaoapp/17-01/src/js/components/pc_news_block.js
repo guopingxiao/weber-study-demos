@@ -2,6 +2,7 @@ import React from 'react';
 import {Card} from 'antd';
 import {Router, Route, Link, browserHistory} from 'react-router'
 export default class PCNewsBlock extends React.Component {
+	// 在组件的构造函数中，初始化state,在componentWillMount()时，通过fetch来抓取数据，
 	constructor() {
 		super();
 		this.state = {
@@ -12,7 +13,9 @@ export default class PCNewsBlock extends React.Component {
 		var myFetchOptions = {
 			method: 'GET'
 		};
-		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions).then(response => response.json()).then(json => this.setState({news: json}));
+		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions)
+		.then(response => response.json())
+		.then(json => this.setState({news: json}));
 	};
 	render() {
 		const {news} = this.state;

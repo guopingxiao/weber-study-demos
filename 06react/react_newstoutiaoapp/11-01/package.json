@@ -24,6 +24,7 @@
     "webpack-dev-server": "^1.16.1"
   },
   "devDependencies": {
+    "babel-loader": "^7.0.0",
     "babel-plugin-import": "^1.0.1"
   }
 }

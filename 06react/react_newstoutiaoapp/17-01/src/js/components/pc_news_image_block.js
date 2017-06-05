@@ -26,7 +26,8 @@ export default class PCNewsImageBlock extends React.Component {
 			overflow: "hidden",
 			textOverflow: "ellipsis"
 		};
-		const {news} = this.state;
+		const {news} = this.state;//对象解构
+		//左边的国际头条模块,通过Link to 跳转到另一个Router状态
 		const newsList = news.length
 			? news.map((newsItem, index) => (
 				<div key={index} class="imageblock">
