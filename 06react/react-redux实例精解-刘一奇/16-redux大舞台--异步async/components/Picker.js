@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 
+// 头上的选择组件
 function Picker({ value, onChange, options }) {
   return (
     <span>
