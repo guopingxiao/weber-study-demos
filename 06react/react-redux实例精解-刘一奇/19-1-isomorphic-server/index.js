@@ -1,7 +1,13 @@
 /* eslint-disable */
 var WebpackIsomorphicTools = require('webpack-isomorphic-tools');
 
-var config = { assets: { images: { extensions: ['png'] } } };
+var config = {
+  assets: {
+    images: {
+      extensions: ['png']
+    }
+  }
+};
 
 new WebpackIsomorphicTools(config)
   .development()
