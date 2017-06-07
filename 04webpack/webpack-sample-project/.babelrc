@@ -1,0 +1,4 @@
+
+{
+  "presets": ["react", "es2015"]//webpack会自动调用.babelrc里的babel配置选项
+}
