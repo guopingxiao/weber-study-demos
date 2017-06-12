@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import config from './config.json';
 import styles from './greet.css';//导入
 
-class Greeter extends Component{
+class Greeter extends React.Component{
   render() {
     return (
       <div className={styles.root}>
