@@ -38,13 +38,14 @@
         //  var container = document.getElementById('container');
         //  container.onmousemove = debounce;
 
-        //参考：https://www.talkingcoder.com/article/6427434037544091919
+        //参考：https://www.talkingcoder.com/article/6427434037544091919 https://keelii.github.io/2016/06/11/javascript-throttle/
         var count = 1;
         var container = document.getElementById('container');
 
         function getUserAction(e) {
             console.log(e.screenX)
         };
+        //闭包形成私有的作用域存放定时器
         // const debounce = (func, wait) => {
         //     var timeout;
 

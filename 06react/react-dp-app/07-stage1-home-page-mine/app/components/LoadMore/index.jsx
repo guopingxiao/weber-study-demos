@@ -13,8 +13,8 @@ class LoadMore extends React.Component {
             <div className="load-more" ref="wrapper">
                 {
                     this.props.isLoadingMore
-                    ? <span>加载中...</span>
-                    : <span onClick={this.loadMoreHandle.bind(this)}>加载更多</span>
+                        ? <span>加载中...</span>
+                        : <span onClick={this.loadMoreHandle.bind(this)}>加载更多</span>
                 }
             </div>
         )
@@ -33,20 +33,19 @@ class LoadMore extends React.Component {
             if (top && top < windowHeight) {
                 // 证明 wrapper 已经被滚动到暴露在页面可视范围之内了
                 onLoadMoreData()
+                console.log('1')
+            }
+        }
+
+        function debounce(func) {
+            let timer = null;
+            return function () {
+                clearTimeout(timer);
+                timer = setTimeout(func, 500);
             }
         }
         // 监听scroll 事件，在指定时间内只触发一次，有就清除，没有就添加一个定时器==》函数节流
-        window.addEventListener('scroll', ()=> {
-            let timeoutId
-            if (this.props.isLoadingMore) {
-                return
-            }
-            if (timeoutId) {
-                clearTimeout(timeoutId)
-            }
-            console.log(1)
-            timeoutId = setTimeout(callback, 500)
-        }, false);
+        window.addEventListener('scroll', debounce(callback));
     }
 }
 
