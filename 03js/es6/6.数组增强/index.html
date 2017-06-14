@@ -53,15 +53,15 @@
 
 	//4.find()和findIndex() 返回第一个满足回调函数条件的值和位置
 	//==>弥补indexOf的不足
-	[1, 4, -5, 10].find((n) => n < 0)
+	//[1, 4, -5, 10].find((n) => n < 0)
 	// -5
-	[1, 5, 10, 15].find(function(value, index, arr) {
+	/*[1, 5, 10, 15].find(function(value, index, arr) {
 	  return value > 9;
-	}) // 10
+	}) // 10*/
 	
-	[1, 5, 10, 15].findIndex(function(value, index, arr) {
+	/*[1, 5, 10, 15].findIndex(function(value, index, arr) {
 	  return value > 9;
-	}) // 2
+	}) // 2*/
 
 
 	// 5.for of 遍历数组
@@ -71,9 +71,9 @@
 	// 0
 	// 1
 
-	for (let elem of ['a', 'b'].values()) {
+	/*for (let elem of ['a', 'b'].values()) {
 	  console.log(elem);
-	}
+	}*/
 	// 'a'
 	// 'b'
 
@@ -87,6 +87,30 @@
 	[1, 2, 3].includes(2);     // true
 	[1, 2, 3].includes(4);     // false
 	[1, 2, NaN].includes(NaN); // true
+
+	let ajax = function* () {
+    yield new Promise((resolve, reject) => {
+      setTimeout(function () {
+        resolve({ code: 0 })
+      }, 2000);
+    });
+  }
+  // 拉取数据
+  let pull = function () {
+    let generator = ajax();
+    let step = generator.next();
+    step.value.then(function (data) {
+      if (data.code !== 0) {
+        setTimeout(function () {
+          console.log('wait');
+          pull();
+        }, 1000)
+      } else {
+        console.info(data)
+      }
+    })
+  }
+  pull();
 	</script>
 </body>
 </html>
