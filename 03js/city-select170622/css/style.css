@@ -1,0 +1,141 @@
+
+.main-nav .icon,
+.page-header .icon,
+.page-header .logo,
+.site-nav .icon {
+    background-image: url(http://www.dpfile.com/mod/app-main-header/1.4.4/css/i/sprite.png);
+    _background-image: url(http://www.dpfile.com/mod/app-main-header/1.4.4/css/i/sprite-ie6.png);
+    background-repeat: no-repeat
+}
+
+.main-nav .container,
+.page-header .container,
+.site-nav .container {
+    width: 960px;
+    margin: 0 auto
+}
+
+
+.page-header {
+    height: 70px;
+    background-color: #fff;
+    clear: both
+}
+
+.page-header .icon {
+    display: inline-block;
+    vertical-align: middle;
+    _overflow: hidden
+}
+
+.page-header .i-arrow {
+    width: 10px;
+    height: 5px;
+    margin-left: 10px;
+    background-position: -60px -40px
+}
+
+
+.page-header .logo {
+    float: left;
+    width: 115px;
+    height: 38px;
+    margin-top: 17px
+}
+
+.page-header .city {
+    position: relative;
+    float: left;
+    height: 36px;
+    font-size: 18px;
+    line-height: 36px;
+    padding: 0 10px;
+    margin: 17px 0 0 17px;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.page-header .city:hover {
+    color: #f63
+}
+
+.page-header .city:before {
+    content: "|";
+    position: absolute;
+    left: -6px;
+    color: #ebebeb
+}
+
+.page-header .city .icon {
+    display: inline-block;
+    width: 9px;
+    height: 5px;
+    margin-left: 10px;
+    *margin: 15px 0 16px 10px
+}
+
+.page-header .city-active {
+    position: relative;
+    border: 1px solid #e3e3e3;
+    border-bottom: none;
+    margin-top: 16px;
+    padding: 0 9px;
+    background-color: #fff;
+    z-index: 41   /*此处的index要大于 citylist 覆盖边框1px*/
+}
+
+.page-header .city-active:before {
+    display: none
+}
+
+.page-header .city-list {
+    position: absolute;
+    top: 62px;
+    border: 1px solid #e3e3e3;
+    background-color: #fff;
+    width: 472px;    /* 78 +（60+5）*6  + 2*/
+    z-index: 40;
+    padding-bottom: 28px  /*留给全部城市*/
+}
+
+.page-header .city-list .group {
+    position: relative;
+    padding: 10px 0 10px 78px;
+    border-top: 1px solid #f6f6f6;
+    line-height: 2;
+}
+
+.page-header .city-list .group:first-child {
+    border-top: none
+}
+
+.page-header .city-list .group .title {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 12px;
+    color: #8c8c8c;
+	width:68px;
+	overflow: hidden;
+}
+
+.page-header .city-list .group a {
+    float: left;
+    width: 60px;
+    margin-right: 5px;
+    color: #282828;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.page-header .city-list .group a:hover {
+    color: #f63
+}
+
+
+.page-header .city-list .all {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    color: #8c8c8c
+}

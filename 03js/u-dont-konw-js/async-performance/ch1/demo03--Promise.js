@@ -68,13 +68,71 @@
         }
     );
     /*
-    等一下，这看起来foo.bar()发生的异常确实被吞掉了。不要害怕，它没有。但更深层次的东西出问题了，也就是我们没能成功地监听他。p.then(..)调用本身返回另一个promise，是 那个 promise将会被TypeError异常拒绝。
+    等一下，这看起来foo.bar()发生的异常确实被吞掉了。不要害怕，它没有。但更深层次的东西出问题了，也就是我们没能成功地监听他。p.then(..)调用本身返回另一个promise，是那个 promise将会被TypeError异常拒绝。
 为什么它不能调用我们在这里定义的错误处理器呢？表面上看起来是一个符合逻辑的行为。但它会违反Promise一旦被解析就 不可变 的基本原则。p已经完成为值42，所以它不能因为在监听p的解析时发生了错误，而在稍后变成一个拒绝。
 
 */
 }
 
 {
-    //可信的Promise
-    
+    //3. 可信的Promise
+    // 考虑一个thenable借口
+    var p = {
+        then: function (cb) {
+            cb(42);
+        }
+    };
+
+    // 这工作起来没问题，但要靠运气
+    p.then(
+        function fulfilled(val) {
+            console.log(val); // 42
+        },
+        function rejected(err) {
+            // 永远不会跑到这里
+        }
+    );
+
+    // 在考虑一个
+    var p = {
+        then: function (cb, errcb) {
+            cb(42);
+            errcb("evil laugh");
+        }
+    };
+
+    p.then(
+        function fulfilled(val) {
+            console.log(val); // 42
+        },
+        function rejected(err) {
+            // 噢，这里本不该运行
+            console.log(err); // evil laugh
+        }
+    );
+
+    //这个p是一个thenable，但它不是表现良好的promise。用Promise.resolve()包装一下
+    Promise.resolve(p)
+        .then(
+        function fulfilled(val) {
+            console.log(val); // 42
+        },
+        function rejected(err) {
+            // 永远不会跑到这里
+        }
+        );
+
+    //用一个可靠的Promise包装器来进行链式调用
+    // 不要只是这么做：
+    foo(42)
+        .then(function (v) {
+            console.log(v);
+        });
+
+    // 相反，这样做：
+    Promise.resolve(foo(42))
+        .then(function (v) {
+            console.log(v);
+        });
+
 }
