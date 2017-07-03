@@ -1,5 +1,0 @@
-var cityContainer = $("#page-header");
-
-
-
-
