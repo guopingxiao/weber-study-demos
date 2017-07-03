@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function triggerClick(element) {
+      var event;
+      if (document.createEvent) {
+        event = document.createEvent('HTMLEvents');
+        event.initEvent('click', true, true);
+      } else {
+        event = document.createEventObject();
+        event.eventType = 'click';
+      }
+
+      event.eventName = 'click';
+
+      if (document.createEvent) {
+        element.dispatchEvent(event);
+      } else {
+        element.fireEvent('on' + event.eventType, event);
+      }
+    }
+
+    triggerClick(Node)
+  </script>
+</body>
+
+</html>
