@@ -3,9 +3,91 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="./js/encode.js"></script>
+    <script type="text/javascript" src="./js/domParse.js"></script>
+    <script type="text/javascript" >
+        var parse = function(htmlstr){
+          var result = '';
+          try {
+            HTMLParse(he.unescape(str, {strict:true}), {
+              start: function(tag, attrs, unary){
+                if(tag =='script' || tag == 'style' || tag == 'iframe' || tag == 'frame' ) return;
+                result += '<'+tag;
+                // 过滤所有的属性，可以对于一些特殊属性，可以开绿灯
+//                for (var i=0, len = attrs.length;i<len;i++){
+//                  result += " " + attrs[i].name + '="'+attrs[i].escaped + '"'
+//                }
+                result += (unary? "/":"") + ">"
+              },
+              end: function(tag){
+                result += "</" + tag;
+              },
+              chars:function(text){
+                result += text
+              },
+              comment: function(){
+                result += "<!--" +text + " -->"
+              }
+            });
+            return result;
+          }catch (e){
+            console.log(e);
+          } finally {
+
+          }
+        }
+    </script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <textarea name="name" id="txt" cols="30" rows="10">
+        <p>sks <img src="null" alt="" onerror="alert(1)"></p>
+    </textarea>
+
+  <button type="button" id="btn">评论</button>
+  <button type="button" id="get">获取评论</button>
+
+    <script type="text/javascript">
+      var btn = document.getElementById('bnt'),
+              get = document.getElementById('get'),
+              txt = document.getElementById('ext');
+
+      btn.addEventListener('click', function(){
+        var xhr = new XMLHttpRequest();
+        var url = '/comment?comment=' + txt.value;
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState ==4) {
+            if (xhr.status = 200) {
+              console.log(xhr)
+            } else {
+              console.log('error')
+            }
+          }
+        }
+        xhr.send();
+      })
+
+      get.addEventListener('click', function(){
+        var xhr = new XMLHttpRequest();
+        var url = '/getComment';
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState ==4) {
+            if (xhr.status = 200) {
+              var com = parse(JSON.parse(xhr.response).comment);
+              var txt = document.createElement('span');
+              txt.innerHTML = com;
+              document.body.appendChild(txt);
+            } else {
+              console.log('error')
+            }
+          }
+        }
+        xhr.send();
+      })
+    </script>
   </body>
 </html>

@@ -4,9 +4,10 @@ var router = express.Router();
 // 假设用户的评论数据就在缓存中喽
 var comments = {};
 
+// 采用html编码
 function html_encode(str){
   var s = '';
-  if(str.lenth == 0) return ''
+  if(str.lenth == 0) return '';
   s = str.replace(/&/g,"&gt;");
   s = s.replace(/</g, '&lt;');
   s = s.replace(/>/,'&gt;');
