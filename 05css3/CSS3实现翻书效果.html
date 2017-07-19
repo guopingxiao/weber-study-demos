@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3实现翻书效果</title>
+    <!-- https://juejin.im/post/595e6dec5188250d7669ced3 -->
+    <style type="text/css"> 
+
+    body {
+        text-align: center;
+    }
+    ul {
+        background: gray;
+        width: 100%;
+        padding: 20px;
+        -webkit-perspective: 200;
+    }
+    li {
+        list-style: none;
+        height: 50px;
+        width: 100px;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        background: white;
+        border-radius: 2px;
+    }
+    .anim {
+        animation: anim 1s infinite;
+        width: 100px;
+        margin-left: -100px;
+        background: white;
+    }
+    @keyframes anim {
+        to {
+            transform: rotateY(-180deg);
+        }
+    }
+    
+    .anim2 {
+        width: 100px;
+        margin-left: -100px;
+        background: white
+    }
+    </style>
+</head>
+<body>
+     <ul>
+        <li>
+        <li class="anim">
+        <li class="anim2">
+    </ul>
+</body>
+</html>
