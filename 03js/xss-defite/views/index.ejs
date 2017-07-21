@@ -3,8 +3,8 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script type="text/javascript" src="./js/encode.js"></script>
-    <script type="text/javascript" src="./js/domParse.js"></script>
+    <script type="text/javascript" src="./js/domParse.js" data-src="http://github.com/mathiasbynens/he/blob/master/he.js"></script>
+    <script type="text/javascript" src="./js/encode.js" data-src="http://raw.githubusercontent.com/blowsie/Pure-JavaScript-HTML5-Parser/master/htmlparser.js"></script>
     <script type="text/javascript" >
         var parse = function(htmlstr){
           var result = '';
@@ -50,9 +50,9 @@
   <button type="button" id="get">获取评论</button>
 
     <script type="text/javascript">
-      var btn = document.getElementById('bnt'),
+      var btn = document.getElementById('btn'),
               get = document.getElementById('get'),
-              txt = document.getElementById('ext');
+              txt = document.getElementById('txt');
 
       btn.addEventListener('click', function(){
         var xhr = new XMLHttpRequest();

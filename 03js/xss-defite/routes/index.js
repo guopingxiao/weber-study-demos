@@ -25,13 +25,13 @@ router.get('/', function(req, res, next) {
 
 //设置评论
 router.get('/comment', function(req, res, next) {
-  comments.v = html_encode(req.query.comment);
+  comments.data = html_encode(req.query.comment);
 });
 
 //获取评论
 router.get('/getComment', function(req,res,next){
   res.json({
-      comment:comments.v
+      comment:comments.data
   })
 })
 
